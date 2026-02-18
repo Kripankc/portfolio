@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Kripan K.C.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img-container {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            background: var(--bg-slate);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+        }
+
+        .about-img-placeholder {
+            font-size: 8rem;
+            color: var(--accent-dim);
+        }
+
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: var(--font-heading);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-img-container {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-bar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand">Kripan<span>.KC</span></a>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-header container">
+        <h1 class="page-title">Personal Story</h1>
+        <p class="page-desc">From Civil Engineering in Nepal to Environmental Data Science in Munich.</p>
+    </main>
+
+    <section class="container" style="padding-bottom: 120px;">
+        <div class="about-grid">
+
+            <div class="about-img-container reveal">
+                <!-- Replace with real image later -->
+                <i class="fa-solid fa-user about-img-placeholder"></i>
+            </div>
+
+            <div class="about-text reveal">
+                <h2 style="margin-bottom:1.5rem;">Driven by Data, Inspired by Nature.</h2>
+                <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+                    I am a Master's student in Environmental Engineering at the <strong>Technical University of Munich
+                        (TUM)</strong>, specializing in Environmental Computing and Remote Sensing. My passion lies at
+                    the intersection of satellite imagery, big data, and machine learning.
+                </p>
+                <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+                    Currently, I work at <strong>Munich Re</strong>, where I develop scalable geospatial risk
+                    intelligence solutions. I bridge the gap between academic research and industrial application,
+                    translating complex environmental models into production-grade software.
+                </p>
+                <p style="color:var(--text-muted); margin-bottom:2rem;">
+                    When I'm not coding algorithms or training models, I'm exploring the Bavarian Alps or contributing
+                    to open-source GIS tools.
+                </p>
+
+                <div class="stat-row">
+                    <div class="stat-item">
+                        <span class="stat-num">3+</span>
+                        <span class="stat-label">Years Exp</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">50+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">1.48</span>
+                        <span class="stat-label">Masters GPA</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <!-- Ensure CV link is correct if file exists, else button does nothing or alerts -->
+                    <a href="Kripan_CV.pdf" target="_blank" class="btn btn-outline"><i class="fa-solid fa-download"
+                            style="margin-right:0.5rem;"></i> Download CV</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

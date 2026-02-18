@@ -1,136 +1,206 @@
 /* ============================================================
-   script.js — Portfolio Site Logic
+   script.js — Portfolio Logic
    ============================================================ */
 
-// ── Navbar scroll effect ──────────────────────────────────────
-const navbar = document.getElementById('navbar');
-if (navbar) {
-    window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-}
+/**
+ * 1. Mobile Menu Toggle
+ */
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
-// ── Active nav link on scroll ─────────────────────────────────
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-
-function updateActiveLink() {
-    let current = '';
-    sections.forEach(section => {
-        const top = section.offsetTop - 100;
-        if (window.scrollY >= top) current = section.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-}
-window.addEventListener('scroll', updateActiveLink, { passive: true });
-
-// ── Hamburger menu ────────────────────────────────────────────
-const hamburger = document.getElementById('hamburger');
-const navMenu   = document.getElementById('nav-links');
-
-if (hamburger && navMenu) {
+if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        navMenu.classList.toggle('open');
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('open');
     });
 
-    // Close on nav link click
-    navMenu.querySelectorAll('.nav-link').forEach(link => {
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
-            hamburger.classList.remove('open');
-            navMenu.classList.remove('open');
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('open');
         });
-    });
-
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-        if (!navbar.contains(e.target)) {
-            hamburger.classList.remove('open');
-            navMenu.classList.remove('open');
-        }
     });
 }
 
-// ── Scroll-reveal animations ──────────────────────────────────
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-            // Stagger children within the same parent
-            const delay = entry.target.dataset.delay || 0;
-            setTimeout(() => {
-                entry.target.classList.add('visible');
-            }, delay);
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-document.querySelectorAll('.reveal').forEach((el, i) => {
-    // Stagger siblings
-    const siblings = el.parentElement.querySelectorAll('.reveal');
-    const idx = Array.from(siblings).indexOf(el);
-    el.dataset.delay = idx * 80;
-    revealObserver.observe(el);
-});
-
-// ── Project filter ────────────────────────────────────────────
-const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards  = document.querySelectorAll('.project-card');
-
-filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Update active button
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = btn.dataset.filter;
-
-        projectCards.forEach(card => {
-            if (filter === 'all') {
-                card.classList.remove('hidden');
-            } else {
-                const categories = card.dataset.categories || '';
-                card.classList.toggle('hidden', !categories.includes(filter));
-            }
-        });
-    });
-});
-
-// ── Modal logic ───────────────────────────────────────────────
-function openModal(id) {
-    const modal = document.getElementById(id);
-    if (!modal) return;
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-
-    // Close on backdrop click
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal(id);
-    });
-}
-
-function closeModal(id) {
-    const modal = document.getElementById(id);
-    if (!modal) return;
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-}
-
-// Close modals on Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        document.querySelectorAll('.modal-overlay.open').forEach(modal => {
-            modal.classList.remove('open');
-        });
-        document.body.style.overflow = '';
+/**
+ * 2. Active Link Highlighting
+ * Highlights the nav link corresponding to the current page.
+ */
+const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('.nav-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPath) {
+        link.classList.add('active');
+    } else {
+        link.classList.remove('active');
     }
 });
 
-// Expose to global scope (used by inline onclick attributes)
-window.openModal  = openModal;
-window.closeModal = closeModal;
+/**
+ * 3. Scroll Reveal Animation
+ * Adds .visible class to elements with .reveal class when scrolled into view.
+ */
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    revealObserver.observe(el);
+});
+
+/**
+ * 4. Project Filter Logic (projects.html)
+ */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projects = document.querySelectorAll('.project-card');
+
+if (filterBtns.length > 0) {
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add to clicked
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            projects.forEach(card => {
+                if (filterValue === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const categories = card.getAttribute('data-categories');
+                    if (categories.includes(filterValue)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+}
+
+/**
+ * 5. Modal Logic (projects.html)
+ */
+window.openModal = function (modalId) {
+    const modal = document.getElementById(modalId);
+    const overlay = document.getElementById('modal-overlay');
+    if (modal && overlay) {
+        overlay.style.display = 'flex';
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scroll
+    }
+};
+
+window.closeModal = function (modalId) {
+    const modal = document.getElementById(modalId);
+    const overlay = document.getElementById('modal-overlay');
+    if (modal && overlay) {
+        modal.style.display = 'none';
+        // If no other modals are open, close overlay
+        const openModals = document.querySelectorAll('.modal-box[style*="display: block"]');
+        if (openModals.length === 0) {
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+};
+
+// Close overlay on click
+const overlay = document.getElementById('modal-overlay');
+if (overlay) {
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            document.querySelectorAll('.modal-box').forEach(modal => {
+                modal.style.display = 'none';
+            });
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+}
+
+/**
+ * 6. Abstract Particle Animation (index.html)
+ */
+const canvas = document.getElementById('bg-canvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resize() {
+        width = canvas.width = canvas.parentElement.offsetWidth; // Use parent width (50% or 100%)
+        height = canvas.height = canvas.parentElement.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.vx = (Math.random() - 0.5) * 0.5;
+            this.vy = (Math.random() - 0.5) * 0.5;
+            this.size = Math.random() * 2 + 1;
+        }
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+        draw() {
+            ctx.fillStyle = 'rgba(0, 212, 170, 0.4)';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function init() {
+        particles = [];
+        for (let i = 0; i < 40; i++) {
+            particles.push(new Particle());
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+            for (let j = i; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 120) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = `rgba(0, 212, 170, ${0.15 - distance / 800})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+}

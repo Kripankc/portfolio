@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills | Kripan K.C.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .skill-category {
+            margin-bottom: 4rem;
+        }
+
+        .cat-title {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cat-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            background: rgba(0, 212, 170, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 0.25rem;
+        }
+
+        .skill-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-bar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand">Kripan<span>.KC</span></a>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="skills.html" class="nav-link active">Skills</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-header container">
+        <h1 class="page-title">Technical Arsenal</h1>
+        <p class="page-desc">The tools and technologies I use to solve complex geospatial problems.</p>
+    </main>
+
+    <section class="container" style="padding-bottom: 120px;">
+
+        <!-- Geospatial -->
+        <div class="skill-category reveal">
+            <h3 class="cat-title"><i class="fa-solid fa-earth-americas"></i> Geospatial Engines</h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <i class="fa-solid fa-satellite skill-icon"></i>
+                    <span class="skill-name">Google Earth Engine</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-map skill-icon"></i>
+                    <span class="skill-name">ArcGIS Pro</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-layer-group skill-icon"></i>
+                    <span class="skill-name">QGIS</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-code-branch skill-icon"></i>
+                    <span class="skill-name">GDAL / OGR</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-database skill-icon"></i>
+                    <span class="skill-name">PostGIS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Science -->
+        <div class="skill-category reveal">
+            <h3 class="cat-title"><i class="fa-solid fa-brain"></i> Data Science & ML</h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <i class="fa-brands fa-python skill-icon"></i>
+                    <span class="skill-name">Python</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-table skill-icon"></i>
+                    <span class="skill-name">Pandas / NumPy</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-robot skill-icon"></i>
+                    <span class="skill-name">Scikit-Learn</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-chart-line skill-icon"></i>
+                    <span class="skill-name">Matplotlib</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-r-project skill-icon"></i>
+                    <span class="skill-name">R Language</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Web & Tools -->
+        <div class="skill-category reveal">
+            <h3 class="cat-title"><i class="fa-solid fa-laptop-code"></i> Engineering & Web</h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <i class="fa-brands fa-html5 skill-icon"></i>
+                    <span class="skill-name">HTML5</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-css3-alt skill-icon"></i>
+                    <span class="skill-name">CSS3</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-js skill-icon"></i>
+                    <span class="skill-name">JavaScript</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-git-alt skill-icon"></i>
+                    <span class="skill-name">Git / GitHub</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-docker skill-icon"></i>
+                    <span class="skill-name">Docker</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-cloud skill-icon"></i>
+                    <span class="skill-name">Azure</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

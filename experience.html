@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | Kripan K.C.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .role-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .achievement-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .achievement-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-bar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand">Kripan<span>.KC</span></a>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="experience.html" class="nav-link active">Experience</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-header container">
+        <h1 class="page-title">Professional Journey</h1>
+        <p class="page-desc">My career path in environmental engineering, GIS, and software development.</p>
+    </main>
+
+    <section class="container" style="padding-bottom: 120px;">
+        <div class="timeline">
+
+            <!-- Munich Re -->
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <h3 class="role-title">Working Student - Location Risk Intelligence</h3>
+                <span class="company">Munich Re <i class="fa-solid fa-shield-halved"
+                        style="margin-left:0.5rem; font-size:0.9em;"></i></span>
+                <span class="date">Oct 2024 - Present</span>
+                <div class="glass-card">
+                    <ul class="achievement-list">
+                        <li>Developing a Python-based geospatial package (Location Risk Intelligence) to integrate
+                            diverse hazard models.</li>
+                        <li>Automating API testing and validation workflows using PyTest and GitHub Actions.</li>
+                        <li>Building cloud-native data pipelines on Azure to process global risk datasets.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TUM -->
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <h3 class="role-title">Research Assistant (HiWi)</h3>
+                <span class="company">Technical University of Munich <i class="fa-solid fa-university"
+                        style="margin-left:0.5rem; font-size:0.9em;"></i></span>
+                <span class="date">Jul 2024 - Sep 2024</span>
+                <div class="glass-card">
+                    <ul class="achievement-list">
+                        <li>Implemented Machine Learning models (Random Forest, XGBoost) for landslide susceptibility
+                            mapping.</li>
+                        <li>Processed 100GB+ of Sentinel-2 satellite imagery using Google Earth Engine.</li>
+                        <li>Optimized data preprocessing scripts, reducing execution time by 40%.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Freelance -->
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <h3 class="role-title">GIS Analyst & Python Developer</h3>
+                <span class="company">Fiverr & Upwork (Freelance) <i class="fa-solid fa-laptop-code"
+                        style="margin-left:0.5rem; font-size:0.9em;"></i></span>
+                <span class="date">2020 - 2023</span>
+                <div class="glass-card">
+                    <ul class="achievement-list">
+                        <li>Completed 50+ projects for international clients involving spatial analysis and web mapping.
+                        </li>
+                        <li>Achieved "Level 2 Seller" status with a 5.0-star rating on Fiverr.</li>
+                        <li>Automated repetitive GIS tasks using ArcPy, saving clients hundreds of hours.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

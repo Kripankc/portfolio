@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Kripan K.C.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 0.5rem 1.5rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(0, 212, 170, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand">Kripan<span>.KC</span></a>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-header container">
+        <h1 class="page-title">Selected Works</h1>
+        <p class="page-desc">A collection of geospatial algorithms, machine learning models, and engineering tools.</p>
+    </main>
+
+    <section class="container" style="padding-bottom: 120px;">
+        <!-- Filter -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="GIS">GIS & Mapping</button>
+            <button class="filter-btn" data-filter="ML">Machine Learning</button>
+            <button class="filter-btn" data-filter="Software">Software Engineering</button>
+            <button class="filter-btn" data-filter="Research">Research</button>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid projects-grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">
+
+            <!-- 1. Geospatial Memory Optimizer (New Placeholder) -->
+            <article class="glass-card project-card" data-categories="Software GIS">
+                <div class="card-header"
+                    style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
+                    <i class="fa-solid fa-memory" style="font-size: 2rem; color: var(--accent);"></i>
+                    <div style="display:flex; gap:0.5rem;">
+                        <span
+                            style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">PYTHON</span>
+                    </div>
+                </div>
+                <h3 style="margin-bottom:0.5rem;">Geospatial Memory Optimizer</h3>
+                <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
+                    Optimized memory management for large-scale geospatial datasets using Copy-On-Write architecture.
+                </p>
+                <button class="btn-outline" onclick="openModal('modal-memory')"
+                    style="padding:0.5rem 1rem; width:100%; font-size:0.9rem;">View Details</button>
+            </article>
+
+            <!-- 2. Raster Voronoi Solver (New Placeholder) -->
+            <article class="glass-card project-card" data-categories="GIS Algorithms">
+                <div class="card-header"
+                    style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
+                    <i class="fa-solid fa-shapes" style="font-size: 2rem; color: var(--accent);"></i>
+                    <div style="display:flex; gap:0.5rem;">
+                        <span
+                            style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">ALGORITHMS</span>
+                    </div>
+                </div>
+                <h3 style="margin-bottom:0.5rem;">Raster Voronoi Solver</h3>
+                <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
+                    High-performance algorithm for solving Voronoi diagrams on raster grids with improved computational
+                    efficiency.
+                </p>
+                <button class="btn-outline" onclick="openModal('modal-voronoi')"
+                    style="padding:0.5rem 1rem; width:100%; font-size:0.9rem;">View Details</button>
+            </article>
+
+            <!-- 3. GEE ET Mapping -->
+            <article class="glass-card project-card" data-categories="GIS Research">
+                <div class="card-header"
+                    style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
+                    <i class="fa-solid fa-satellite" style="font-size: 2rem; color: var(--accent);"></i>
+                    <span
+                        style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">GEE</span>
+                </div>
+                <h3 style="margin-bottom:0.5rem;">Evapotranspiration Mapping</h3>
+                <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
+                    Remote sensing pipeline on Google Earth Engine to map ET rates across agricultural zones.
+                </p>
+                <button class="btn-outline" onclick="openModal('modal-gee')"
+                    style="padding:0.5rem 1rem; width:100%; font-size:0.9rem;">View Details</button>
+            </article>
+
+            <!-- 4. Study Project (Elevation) -->
+            <article class="glass-card project-card" data-categories="Research ML">
+                <div class="card-header"
+                    style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
+                    <i class="fa-solid fa-layer-group" style="font-size: 2rem; color: var(--accent);"></i>
+                    <span
+                        style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">RESEARCH</span>
+                </div>
+                <h3 style="margin-bottom:0.5rem;">Elevation Smoothing & PPT</h3>
+                <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
+                    Reduced predictive error by 45.4% using smoothed elevation covariates in precipitation models.
+                </p>
+                <button class="btn-outline" onclick="openModal('modal-elevation')"
+                    style="padding:0.5rem 1rem; width:100%; font-size:0.9rem;">View Details</button>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay"
+        style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:1200; backdrop-filter:blur(5px); align-items:center; justify-content:center;">
+        <!-- Modals content will be dynamically injected or hardcoded here. I'll stick to hardcoded for simplicity given no server. -->
+
+        <!-- Memory Modal -->
+        <div id="modal-memory" class="modal-box"
+            style="display:none; background:var(--bg-slate); padding:2rem; max-width:600px; border-radius:var(--radius-lg); border:1px solid var(--border); position:relative;">
+            <button class="modal-close" onclick="closeModal('modal-memory')"
+                style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:white; font-size:1.5rem;">&times;</button>
+            <h2 style="margin-bottom:1rem;">Geospatial Memory Optimizer</h2>
+            <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+                A specialized Python framework designed to handle large-scale geospatial data processing by implementing
+                Copy-On-Write (COW) shared memory architecture. This tool significantly reduces RAM overhead when
+                processing massive raster datasets in parallel.
+            </p>
+            <div style="display:flex; gap:1rem;">
+                <a href="https://github.com/Kripankc/geospatial-memory-optimizer" target="_blank"
+                    class="btn btn-primary">View on GitHub</a>
+            </div>
+        </div>
+
+        <!-- Voronoi Modal -->
+        <div id="modal-voronoi" class="modal-box"
+            style="display:none; background:var(--bg-slate); padding:2rem; max-width:600px; border-radius:var(--radius-lg); border:1px solid var(--border); position:relative;">
+            <button class="modal-close" onclick="closeModal('modal-voronoi')"
+                style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:white; font-size:1.5rem;">&times;</button>
+            <h2 style="margin-bottom:1rem;">Raster Voronoi Solver</h2>
+            <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+                An efficient algorithm implementation for generating Voronoi diagrams directly on raster grids. This
+                approach surpasses traditional vector-based methods in speed for specific high-resolution environmental
+                modeling tasks.
+            </p>
+            <div style="display:flex; gap:1rem;">
+                <a href="https://github.com/Kripankc/raster-voronoi-solver" target="_blank" class="btn btn-primary">View
+                    on GitHub</a>
+            </div>
+        </div>
+
+        <!-- GEE Modal -->
+        <div id="modal-gee" class="modal-box"
+            style="display:none; background:var(--bg-slate); padding:2rem; max-width:600px; border-radius:var(--radius-lg); border:1px solid var(--border); position:relative;">
+            <button class="modal-close" onclick="closeModal('modal-gee')"
+                style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:white; font-size:1.5rem;">&times;</button>
+            <h2 style="margin-bottom:1rem;">Evapotranspiration Mapping</h2>
+            <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+                Developed a comprehensive pipeline using Google Earth Engine (GEE) to map evapotranspiration rates. This
+                project leverages satellite imagery to monitor water usage in agricultural zones, aiding in efficient
+                irrigation management.
+            </p>
+            <div style="display:flex; gap:1rem;">
+                <a href="https://github.com/Kripankc/evapotranspiration-mapping-on-GEE" target="_blank"
+                    class="btn btn-primary">View on GitHub</a>
+            </div>
+        </div>
+
+        <!-- Elevation Modal -->
+        <div id="modal-elevation" class="modal-box"
+            style="display:none; background:var(--bg-slate); padding:2rem; max-width:600px; border-radius:var(--radius-lg); border:1px solid var(--border); position:relative;">
+            <button class="modal-close" onclick="closeModal('modal-elevation')"
+                style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:white; font-size:1.5rem;">&times;</button>
+            <h2 style="margin-bottom:1rem;">Elevation Smoothing & PPT</h2>
+            <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+                <strong>Research Abstract:</strong> Investigated the impact of elevation smoothing on precipitation
+                interpolation accuracy in the Bavarian Alps. By applying a 5x5 focal mean filter to DEM data, the
+                predictive capability of the model improved significantly, reducing RMSE by ~45.4% compared to raw
+                elevation data.
+            </p>
+            <div style="display:flex; gap:1rem;">
+                <a href="https://github.com/Kripankc/Study_Project" target="_blank" class="btn btn-primary">View on
+                    GitHub</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
