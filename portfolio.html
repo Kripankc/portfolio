@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Projects by Kripan K.C. — GIS, remote sensing, hydrological modelling, and environmental data science.">
+    <title>Projects | Kripan K.C.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand">Kripan<span>.</span>KC</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html#education" class="nav-link">Education</a></li>
+                <li><a href="portfolio.html" class="nav-link active">Projects</a></li>
+                <li><a href="index.html#contact" class="nav-link nav-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content reveal">
+                <span class="section-tag">Work &amp; Research</span>
+                <h1>Projects</h1>
+                <p>A selection of academic research, geospatial analyses, and software projects spanning environmental
+                    engineering, remote sensing, and data science.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar sticky-filter">
+        <div class="container">
+            <div class="filter-buttons" id="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="hydrology">Hydrology &amp; Modelling</button>
+                <button class="filter-btn" data-filter="remote-sensing">Remote Sensing</button>
+                <button class="filter-btn" data-filter="gis">GIS &amp; Spatial Analysis</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+                <button class="filter-btn" data-filter="software">Software &amp; Tools</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <section class="projects-section">
+        <div class="container">
+            <div class="projects-grid" id="projects-grid">
+
+                <!-- 1. Areal Precipitation Optimization -->
+                <div class="project-card reveal" data-categories="hydrology gis">
+                    <div class="project-card-top">
+                        <div class="project-icon"><i class="fas fa-cloud-rain"></i></div>
+                        <div class="project-badges">
+                            <span class="proj-tag">Hydrology</span>
+                            <span class="proj-tag">GIS</span>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3>Areal Precipitation Optimisation</h3>
+                        <p>Developed a directional DEM smoothing and stratified kriging framework to improve areal
+                            precipitation estimation for rainfall-runoff modelling. Achieved a 45.4% reduction in
+                            estimation error compared to standard interpolation methods.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-tools"></i> Python · Kriging · DEM Analysis · ArcGIS</span>
+                            <span><i class="fas fa-tag"></i> Academic Research · Grade: 1.0</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <button class="btn btn-outline btn-sm" onclick="openModal('modal-precip')">
+                            <i class="fas fa-file-alt"></i> View Abstract
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. Flood Risk Reduction: Roßhaupten -->
+                <div class="project-card reveal" data-categories="hydrology gis">
+                    <div class="project-card-top">
+                        <div class="project-icon"><i class="fas fa-water"></i></div>
+                        <div class="project-badges">
+                            <span class="proj-tag">Hydrology</span>
+                            <span class="proj-tag">GIS</span>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3>Flood Risk Reduction: Roßhaupten</h3>
+                        <p>Conducted a micro-level flood risk assessment for the Roßhaupten area using high-resolution
+                            geospatial parameters. Evaluated culvert design strategies and proposed infrastructure
+                            interventions to reduce flood exposure for local communities.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-tools"></i> HEC-RAS · ArcGIS Pro · LiDAR · Hydrological
+                                Modelling</span>
+                            <span><i class="fas fa-tag"></i> Academic Research</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <button class="btn btn-outline btn-sm" onclick="openModal('modal-flood')">
+                            <i class="fas fa-file-alt"></i> View Abstract
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. Inn River Snowmelt Model -->
+                <div class="project-card reveal" data-categories="hydrology remote-sensing">
+                    <div class="project-card-top">
+                        <div class="project-icon"><i class="fas fa-snowflake"></i></div>
+                        <div class="project-badges">
+                            <span class="proj-tag">Hydrology</span>
+                            <span class="proj-tag">Remote Sensing</span>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3>Inn River Snowmelt Runoff Model</h3>
+                        <p>Enhanced a snowmelt runoff model for the Inn River basin by integrating solar radiation data
+                            derived from Google Earth Engine. Improved model accuracy by accounting for spatially
+                            variable energy inputs across complex Alpine terrain.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-tools"></i> Google Earth Engine · Python · Snowmelt Modelling</span>
+                            <span><i class="fas fa-tag"></i> Academic Research</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <button class="btn btn-outline btn-sm" onclick="openModal('modal-snowmelt')">
+                            <i class="fas fa-file-alt"></i> View Abstract
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4. Glacier Dynamics in Nepal -->
+                <div class="project-card reveal" data-categories="remote-sensing ml">
+                    <div class="project-card-top">
+                        <div class="project-icon"><i class="fas fa-mountain"></i></div>
+                        <div class="project-badges">
+                            <span class="proj-tag">Remote Sensing</span>
+                            <span class="proj-tag">Machine Learning</span>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3>Glacier Dynamics in Nepal (30-Year Study)</h3>
+                        <p>Investigated long-term glacier retreat and area changes in the Marshyangdi River basin,
+                            Nepal, using multi-temporal Sentinel-2 imagery and machine learning classification.
+                            Quantified decadal trends in glacial extent and their implications for downstream water
+                            availability.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-tools"></i> Sentinel-2 · Scikit-learn · GEE · Python</span>
+                            <span><i class="fas fa-tag"></i> Academic Research</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <button class="btn btn-outline btn-sm" onclick="openModal('modal-glacier')">
+                            <i class="fas fa-file-alt"></i> View Abstract
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 5. Post-Disaster LULC Analysis -->
+                <div class="project-card reveal" data-categories="remote-sensing gis">
+                    <div class="project-card-top">
+                        <div class="project-icon"><i class="fas fa-satellite"></i></div>
+                        <div class="project-badges">
+                            <span class="proj-tag">Remote Sensing</span>
+                            <span class="proj-tag">GIS</span>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3>Post-Disaster Land Use Change — Nepal 2015</h3>
+                        <p>Quantified land use and land cover (LULC) change patterns in Nepal following the 2015 Gorkha
+                            earthquake using multi-temporal satellite imagery. Assessed the spatial extent of landscape
+                            disruption and recovery trajectories across affected districts.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-tools"></i> Landsat · QGIS · Change Detection · Python</span>
+                            <span><i class="fas fa-tag"></i> Academic Research</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <button class="btn btn-outline btn-sm" onclick="openModal('modal-lulc')">
+                            <i class="fas fa-file-alt"></i> View Abstract
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 6. Global Evapotranspiration Model (GitHub) -->
+                <div class="project-card reveal" data-categories="remote-sensing software">
+                    <div class="project-card-top">
+                        <div class="project-icon"><i class="fas fa-leaf"></i></div>
+                        <div class="project-badges">
+                            <span class="proj-tag">Remote Sensing</span>
+                            <span class="proj-tag">Software</span>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3>Global Evapotranspiration Mapping (GEE)</h3>
+                        <p>Developed a cloud-based evapotranspiration estimation workflow using Google Earth Engine,
+                            integrating MODIS land surface temperature, soil moisture, and LULC data. The pipeline
+                            supports regional-scale ET mapping with temporal aggregation and interactive visualisation.
+                        </p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-tools"></i> Google Earth Engine · Python · MODIS · JavaScript</span>
+                            <span><i class="fas fa-tag"></i> Open Source · 4 ⭐ on GitHub</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="https://github.com/Kripankc/evapotranspiration-mapping-on-GEE" target="_blank"
+                            rel="noopener" class="btn btn-primary btn-sm">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 7. Elevation Smoothing / PPT Interpolation (GitHub) -->
+                <div class="project-card reveal" data-categories="hydrology software">
+                    <div class="project-card-top">
+                        <div class="project-icon"><i class="fas fa-layer-group"></i></div>
+                        <div class="project-badges">
+                            <span class="proj-tag">Hydrology</span>
+                            <span class="proj-tag">Software</span>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3>Elevation Smoothing for Precipitation Interpolation</h3>
+                        <p>Implemented a DEM pre-processing tool that applies directional smoothing to digital elevation
+                            models, improving the spatial coherence of orographic precipitation interpolation. Designed
+                            for integration into rainfall-runoff modelling workflows.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-tools"></i> Python · NumPy · Rasterio · SciPy</span>
+                            <span><i class="fas fa-tag"></i> Open Source</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="https://github.com/Kripankc/Study_Project" target="_blank" rel="noopener"
+                            class="btn btn-primary btn-sm">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+            </div><!-- /projects-grid -->
+        </div>
+    </section>
+
+    <!-- ===================== MODALS ===================== -->
+
+    <!-- Modal: Areal Precipitation -->
+    <div class="modal-overlay" id="modal-precip" role="dialog" aria-modal="true" aria-labelledby="modal-precip-title">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-precip')" aria-label="Close"><i
+                    class="fas fa-times"></i></button>
+            <div class="modal-tag">Academic Research · Hydrology &amp; GIS</div>
+            <h2 id="modal-precip-title">Areal Precipitation Optimisation for Rainfall-Runoff Modelling</h2>
+            <div class="modal-meta">
+                <span><i class="fas fa-university"></i> Technical University of Munich</span>
+                <span><i class="fas fa-star"></i> Grade: 1.0 (Excellent)</span>
+            </div>
+            <div class="modal-abstract">
+                <h4>Abstract</h4>
+                <p>
+                    Accurate areal precipitation estimation is a critical input for rainfall-runoff modelling,
+                    particularly in complex terrain where orographic effects introduce significant spatial variability.
+                    This study addresses systematic biases in standard interpolation methods by developing a
+                    directional DEM smoothing framework combined with stratified kriging.
+                </p>
+                <p>
+                    The approach modifies digital elevation model (DEM) data to better reflect the
+                    precipitation-generating mechanisms of prevailing wind directions, producing a
+                    topographic predictor that more accurately captures orographic enhancement.
+                    Stratified kriging is then applied using this modified DEM as a covariate,
+                    improving spatial interpolation of rain gauge observations.
+                </p>
+                <p>
+                    Applied to a study catchment in the Alpine region, the method achieved a
+                    <strong>45.4% reduction in areal precipitation estimation error</strong> compared to
+                    conventional kriging with the original DEM. The results demonstrate that targeted
+                    pre-processing of topographic inputs can substantially improve the quality of
+                    spatially distributed precipitation fields used in hydrological modelling.
+                </p>
+                <div class="modal-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Kriging</span>
+                    <span class="tag">DEM Analysis</span>
+                    <span class="tag">ArcGIS Pro</span>
+                    <span class="tag">Rainfall-Runoff Modelling</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Flood Risk -->
+    <div class="modal-overlay" id="modal-flood" role="dialog" aria-modal="true" aria-labelledby="modal-flood-title">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-flood')" aria-label="Close"><i
+                    class="fas fa-times"></i></button>
+            <div class="modal-tag">Academic Research · Hydrology &amp; GIS</div>
+            <h2 id="modal-flood-title">Flood Risk Reduction: Micro-Level Assessment in Roßhaupten</h2>
+            <div class="modal-meta">
+                <span><i class="fas fa-university"></i> Technical University of Munich</span>
+                <span><i class="fas fa-map-marker-alt"></i> Roßhaupten, Bavaria, Germany</span>
+            </div>
+            <div class="modal-abstract">
+                <h4>Abstract</h4>
+                <p>
+                    This project presents a micro-level flood risk assessment for the municipality of
+                    Roßhaupten, Bavaria, integrating high-resolution geospatial data with hydraulic
+                    modelling to evaluate current flood exposure and identify risk reduction measures.
+                </p>
+                <p>
+                    LiDAR-derived digital terrain models were used to characterise the local drainage
+                    network and identify hydraulic bottlenecks. Flood inundation extents were simulated
+                    under multiple return period scenarios using HEC-RAS, and results were intersected
+                    with land use and infrastructure datasets to quantify exposure at the parcel level.
+                </p>
+                <p>
+                    The study evaluated culvert design alternatives and proposed targeted infrastructure
+                    interventions to reduce peak flow velocities and inundation depths in residential areas.
+                    Findings provide a basis for cost-effective, locally adapted flood risk management
+                    strategies for small Alpine communities.
+                </p>
+                <div class="modal-tags">
+                    <span class="tag">HEC-RAS</span>
+                    <span class="tag">ArcGIS Pro</span>
+                    <span class="tag">LiDAR</span>
+                    <span class="tag">Flood Modelling</span>
+                    <span class="tag">Risk Assessment</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Snowmelt -->
+    <div class="modal-overlay" id="modal-snowmelt" role="dialog" aria-modal="true"
+        aria-labelledby="modal-snowmelt-title">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-snowmelt')" aria-label="Close"><i
+                    class="fas fa-times"></i></button>
+            <div class="modal-tag">Academic Research · Hydrology &amp; Remote Sensing</div>
+            <h2 id="modal-snowmelt-title">Radiation-Enhanced Snowmelt Runoff Modelling — Inn River Basin</h2>
+            <div class="modal-meta">
+                <span><i class="fas fa-university"></i> Technical University of Munich</span>
+                <span><i class="fas fa-map-marker-alt"></i> Inn River Basin, Alps</span>
+            </div>
+            <div class="modal-abstract">
+                <h4>Abstract</h4>
+                <p>
+                    Snowmelt is a dominant driver of spring and early summer runoff in Alpine catchments.
+                    Standard temperature-index models often fail to capture the spatial heterogeneity of
+                    melt rates across complex terrain, where aspect and slope strongly influence incoming
+                    solar radiation.
+                </p>
+                <p>
+                    This study enhanced a snowmelt runoff model for the Inn River basin by incorporating
+                    spatially distributed shortwave radiation data derived from Google Earth Engine.
+                    Terrain-corrected radiation grids were computed from digital elevation models and
+                    integrated as an energy input term alongside temperature data, replacing the
+                    spatially uniform radiation assumption of the baseline model.
+                </p>
+                <p>
+                    The radiation-enhanced model demonstrated improved agreement with observed discharge
+                    hydrographs, particularly during the onset of the melt season, when spatial
+                    variability in energy inputs is most pronounced. The approach offers a computationally
+                    efficient pathway to improve snowmelt model performance without requiring full
+                    energy-balance parameterisation.
+                </p>
+                <div class="modal-tags">
+                    <span class="tag">Google Earth Engine</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Snowmelt Modelling</span>
+                    <span class="tag">Alpine Hydrology</span>
+                    <span class="tag">Remote Sensing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Glacier Dynamics -->
+    <div class="modal-overlay" id="modal-glacier" role="dialog" aria-modal="true" aria-labelledby="modal-glacier-title">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-glacier')" aria-label="Close"><i
+                    class="fas fa-times"></i></button>
+            <div class="modal-tag">Academic Research · Remote Sensing &amp; Machine Learning</div>
+            <h2 id="modal-glacier-title">Glacier Dynamics in the Marshyangdi Basin, Nepal — A 30-Year Analysis</h2>
+            <div class="modal-meta">
+                <span><i class="fas fa-university"></i> Kathmandu University / TUM</span>
+                <span><i class="fas fa-map-marker-alt"></i> Marshyangdi Basin, Nepal</span>
+            </div>
+            <div class="modal-abstract">
+                <h4>Abstract</h4>
+                <p>
+                    Himalayan glaciers are among the most sensitive indicators of climate change,
+                    and their retreat has significant implications for water security across South Asia.
+                    This study investigates three decades of glacier dynamics in the Marshyangdi River
+                    basin, Nepal, using multi-temporal satellite imagery and machine learning classification.
+                </p>
+                <p>
+                    Sentinel-2 and Landsat imagery spanning 1990–2020 were processed in Google Earth Engine
+                    to generate annual glacier extent maps. A supervised machine learning classifier was
+                    trained on spectral and topographic features to distinguish glaciated from non-glaciated
+                    surfaces, with particular attention to debris-covered glacier identification — a
+                    persistent challenge in Himalayan remote sensing.
+                </p>
+                <p>
+                    Results reveal a statistically significant reduction in total glaciated area over the
+                    study period, with accelerating retreat rates observed in the most recent decade.
+                    The findings contribute to the evidence base for climate-driven cryosphere change
+                    in the Hindu Kush Himalaya region and have implications for downstream hydropower
+                    and water resource planning.
+                </p>
+                <div class="modal-tags">
+                    <span class="tag">Sentinel-2</span>
+                    <span class="tag">Landsat</span>
+                    <span class="tag">Google Earth Engine</span>
+                    <span class="tag">Scikit-learn</span>
+                    <span class="tag">Change Detection</span>
+                    <span class="tag">Cryosphere</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: LULC -->
+    <div class="modal-overlay" id="modal-lulc" role="dialog" aria-modal="true" aria-labelledby="modal-lulc-title">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-lulc')" aria-label="Close"><i
+                    class="fas fa-times"></i></button>
+            <div class="modal-tag">Academic Research · Remote Sensing &amp; GIS</div>
+            <h2 id="modal-lulc-title">Post-Disaster Land Use Change Analysis — 2015 Nepal Earthquake</h2>
+            <div class="modal-meta">
+                <span><i class="fas fa-university"></i> Kathmandu University</span>
+                <span><i class="fas fa-map-marker-alt"></i> Nepal (Gorkha Earthquake Affected Districts)</span>
+            </div>
+            <div class="modal-abstract">
+                <h4>Abstract</h4>
+                <p>
+                    The April 2015 Gorkha earthquake (Mw 7.8) caused widespread landscape disruption
+                    across central Nepal, triggering thousands of landslides and altering land cover
+                    patterns across a large area. This study quantifies post-disaster land use and
+                    land cover (LULC) change using multi-temporal satellite imagery and supervised
+                    classification.
+                </p>
+                <p>
+                    Pre- and post-earthquake Landsat imagery was classified using a maximum likelihood
+                    classifier to map six LULC categories across the most severely affected districts.
+                    Change detection analysis identified areas of significant transition, particularly
+                    the conversion of vegetated slopes to bare land and debris deposits.
+                </p>
+                <p>
+                    The study documents both the immediate landscape impacts of the earthquake and
+                    early recovery trajectories over a three-year monitoring period. Results highlight
+                    the utility of freely available satellite data for rapid post-disaster environmental
+                    assessment and can inform land use planning and ecological restoration efforts
+                    in disaster-affected regions.
+                </p>
+                <div class="modal-tags">
+                    <span class="tag">Landsat</span>
+                    <span class="tag">QGIS</span>
+                    <span class="tag">Change Detection</span>
+                    <span class="tag">LULC Classification</span>
+                    <span class="tag">Disaster Risk</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-inner">
+            <span class="brand">Kripan<span>.</span>KC</span>
+            <p>© 2026 Kripan K.C. · Environmental Engineer &amp; Geospatial Data Scientist</p>
+            <div class="footer-links">
+                <a href="https://github.com/Kripankc" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:Kripankc3@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
