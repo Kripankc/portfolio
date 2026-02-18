@@ -4,7 +4,6 @@
    DESIGN TOKENS - MIDNIGHT & CYAN
    ============================================================ */
 :root {
-    /* Palette - Midnight Theme */
     --bg-deep: #030712;
     --bg-slate: #0f172a;
     --bg-glass: rgba(15, 23, 42, 0.4);
@@ -19,24 +18,16 @@
     --border: rgba(255, 255, 255, 0.1);
     --border-glow: rgba(0, 243, 255, 0.3);
 
-    /* Gradients */
-    --gradient-mesh: radial-gradient(circle at 50% 50%, rgba(157, 78, 221, 0.15), rgba(0, 243, 255, 0.1), transparent 60%);
-
-    /* Typography */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
 
-    /* Spacing */
     --radius-sm: 8px;
     --radius-md: 16px;
     --radius-lg: 24px;
     --nav-height: 80px;
-
-    /* Transitions */
-    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-    --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     --duration: 0.4s;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 /* ============================================================
@@ -61,7 +52,7 @@ body {
     flex-direction: column;
 }
 
-/* Modern Mesh Gradient Background (Mouse Follow Effect handled by JS on this container) */
+/* Mesh Gradient - Mouse Follow handled by JS/CSS */
 .mesh-bg {
     position: fixed;
     top: 0;
@@ -119,7 +110,7 @@ img {
 }
 
 /* ============================================================
-   LAYOUT UTILITIES
+   LAYOUT & CONTAINER 
    ============================================================ */
 .container {
     width: 100%;
@@ -128,21 +119,40 @@ img {
     padding: 0 2rem;
 }
 
-.section {
-    padding: 120px 0;
-    position: relative;
+/* Page Header Spacing - Crucial for Fixed Nav */
+.page-header {
+    padding-top: 150px;
+    /* Clears fixed nav (80px) + spacing */
+    padding-bottom: 2rem;
+    text-align: center;
 }
 
-/* Hero Wrapper - Full Screen, Flex Center, No Overflow */
+.page-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.page-desc {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* Hero Wrapper - Fixed Layout Issue */
 .hero-wrapper {
-    height: 100vh;
+    min-height: 100vh;
+    padding-top: 120px;
+    /* Ensure content starts below nav even on small screens */
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     position: relative;
-    padding-top: var(--nav-height);
-    /* Offset for fixed nav */
+    /* Removed overflow:hidden to allow scrolling if content overflows */
 }
 
 .hero-content {
@@ -168,6 +178,7 @@ img {
     margin-bottom: 1.5rem;
     background: linear-gradient(to bottom right, #fff, #94a3b8);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -187,7 +198,7 @@ img {
 }
 
 /* ============================================================
-   NAVBAR (Sticky/Fixed)
+   NAVBAR (Fixed)
    ============================================================ */
 .nav-bar {
     position: fixed;
@@ -195,10 +206,11 @@ img {
     left: 0;
     width: 100%;
     height: var(--nav-height);
-    background: rgba(3, 7, 18, 0.7);
+    background: rgba(3, 7, 18, 0.8);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    z-index: 1000;
+    z-index: 9999;
+    /* Max z-index */
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -236,7 +248,6 @@ img {
     color: var(--accent-cyan);
 }
 
-/* Hamburger */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -275,187 +286,129 @@ img {
 }
 
 /* ============================================================
-   TIMELINE (Experience)
-   ============================================================ */
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 0;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 2px;
-    height: 100%;
-    background: var(--border);
-    transform: translateX(-50%);
-}
-
-.timeline-node {
-    position: relative;
-    margin-bottom: 4rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
-}
-
-.timeline-node.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.timeline-dot {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 16px;
-    height: 16px;
-    background: var(--accent-cyan);
-    border-radius: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 0 10px var(--accent-glow);
-    z-index: 2;
-}
-
-.timeline-card {
-    width: 45%;
-    background: rgba(15, 23, 42, 0.4);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 1.5rem;
-    position: relative;
-}
-
-.timeline-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-cyan);
-}
-
-/* Alternating sides */
-.timeline-node:nth-child(odd) .timeline-card {
-    margin-right: auto;
-    text-align: right;
-}
-
-.timeline-node:nth-child(even) .timeline-card {
-    margin-left: auto;
-    text-align: left;
-}
-
-.timeline-node:nth-child(odd) .timeline-date {
-    right: -60%;
-}
-
-/* Rough positioning for date if outside */
-/* Let's put date inside the card for simplicity and responsiveness logic, or use pill badge inside */
-.date-pill {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 100px;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--accent-cyan);
-    margin-bottom: 0.5rem;
-}
-
-@media (max-width: 768px) {
-    .timeline::before {
-        left: 20px;
-    }
-
-    .timeline-dot {
-        left: 20px;
-    }
-
-    .timeline-card {
-        width: 85%;
-        margin-left: 60px !important;
-        text-align: left !important;
-    }
-}
-
-/* ============================================================
-   BENTO GRID (About)
+   BENTO GRID (Projects, Skills, Experience, About)
    ============================================================ */
 .bento-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     padding: 2rem 0;
 }
 
-.bento-box {
-    background: rgba(15, 23, 42, 0.3);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--border);
+.bento-item {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: var(--radius-md);
     padding: 2rem;
+    transition: transform var(--duration) var(--ease-out), box-shadow var(--duration) var(--ease-out);
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.bento-box:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
+.bento-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 243, 255, 0.1);
     border-color: var(--border-glow);
 }
 
-.bento-icon {
-    font-size: 2rem;
-    color: var(--accent-cyan);
-    margin-bottom: 1rem;
-}
-
-.bento-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-main);
-}
-
-.bento-text {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-}
-
-/* Modularity */
-.bento-large {
+.bento-span-2 {
     grid-column: span 2;
 }
 
 @media (max-width: 768px) {
-    .bento-large {
+    .bento-span-2 {
         grid-column: span 1;
     }
 }
 
+/* Shared Card Headers/Content */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.card-icon {
+    font-size: 2rem;
+    color: var(--accent-cyan);
+}
+
+.card-tag {
+    font-size: 0.75rem;
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    color: var(--text-muted);
+}
+
+.card-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.card-sub {
+    font-size: 0.95rem;
+    color: var(--accent-cyan);
+    margin-bottom: 0.8rem;
+}
+
+.card-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.btn-primary {
+    background: var(--accent-cyan);
+    color: var(--bg-deep);
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+    align-self: flex-start;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 15px var(--accent-glow);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+}
+
+.btn-outline:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
 /* ============================================================
-   PROJECT MODAL (Focus System)
+   MODAL SYSTEM
    ============================================================ */
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(20px);
-    /* Heavy blur */
-    -webkit-backdrop-filter: blur(20px);
-    z-index: 2000;
+    z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s;
+    transition: 0.3s;
 }
 
 .modal-overlay.active {
@@ -469,13 +422,11 @@ img {
     border-radius: var(--radius-lg);
     width: 90%;
     max-width: 800px;
-    padding: 3rem;
-    position: relative;
+    padding: 2rem;
     transform: scale(0.9);
-    transition: transform 0.4s var(--ease-spring);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    transition: 0.3s ease;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.5fr;
     gap: 2rem;
 }
 
@@ -483,84 +434,49 @@ img {
     transform: scale(1);
 }
 
-/* 3D Visual Effect Placeholder */
 .project-3d-visual {
-    width: 100%;
-    height: 300px;
-    background: radial-gradient(circle at center, rgba(0, 243, 255, 0.1), transparent);
-    border: 1px solid var(--border);
+    background: radial-gradient(circle, rgba(0, 243, 255, 0.1), transparent);
+    border: 1px dashed var(--border);
     border-radius: var(--radius-md);
-    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-    transition: transform 0.5s;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
     color: var(--accent-cyan);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.project-3d-visual:hover {
-    transform: perspective(1000px) rotateY(0) rotateX(0) scale(1.05);
-}
-
-.modal-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.modal-close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    font-size: 1.5rem;
-    color: var(--text-muted);
-    padding: 0.5rem;
-    cursor: pointer;
-    transition: color 0.3s;
-    background: transparent;
-}
-
-.modal-close:hover {
+.modal-title {
+    font-size: 1.8rem;
     color: var(--accent-cyan);
+    margin-bottom: 0.5rem;
+}
+
+.modal-desc {
+    margin-bottom: 1.5rem;
 }
 
 .modal-actions {
-    margin-top: 2rem;
     display: flex;
     gap: 1rem;
 }
 
-/* BUTTONS */
-.btn-primary {
-    background: var(--accent-cyan);
-    color: var(--bg-deep);
-    padding: 0.8rem 1.5rem;
-    border-radius: var(--radius-sm);
-    font-weight: 600;
-    transition: 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    color: white;
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px var(--accent-glow);
-}
+@media (max-width: 768px) {
+    .modal-content {
+        grid-template-columns: 1fr;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
 
-.btn-outline {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-main);
-    padding: 0.8rem 1.5rem;
-    border-radius: var(--radius-sm);
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-.btn-outline:hover {
-    border-color: var(--accent-cyan);
-    color: var(--accent-cyan);
+    .project-3d-visual {
+        min-height: 150px;
+    }
 }

@@ -32,69 +32,76 @@
         </div>
     </nav>
 
-    <main class="container section">
-        <h1 class="hero-title" style="text-align:center;">Professional Journey</h1>
+    <main class="page-header container">
+        <h1 class="page-title reveal">Professional Journey</h1>
+        <p class="page-desc reveal" style="transition-delay:0.1s;">
+            A timeline of my work in environmental engineering and geospatial data science.
+        </p>
+    </main>
 
-        <div class="timeline">
+    <section class="container" style="padding-bottom: 120px;">
+        <div class="bento-grid">
+
             <!-- Munich Re -->
-            <div class="timeline-node">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <span class="date-pill">Sep 2025 - Present</span>
-                    <h3 style="color:var(--text-main); margin-bottom:0.2rem;">Intern – Geospatial Solutions</h3>
-                    <h4 style="color:var(--accent-cyan); margin-bottom:1rem;">Munich Re (Munich, Germany)</h4>
-                    <p style="color:var(--text-muted); font-size:0.95rem;">
-                        Contributing to the Geospatial Solutions Team by developing scalable data processing pipelines
-                        and analyzing environmental risks for reinsurance applications.
-                    </p>
+            <article class="bento-item bento-span-2">
+                <div class="card-header">
+                    <i class="fa-solid fa-earth-europe card-icon"></i>
+                    <span class="card-tag">Sep 2025 - Present</span>
                 </div>
-            </div>
+                <h3 class="card-title">Intern – Geospatial Solutions</h3>
+                <h4 class="card-sub">Munich Re (Munich, Germany)</h4>
+                <p class="card-desc">
+                    Contributing to the Geospatial Solutions Team by developing scalable data processing pipelines and
+                    analyzing environmental risks for reinsurance applications.
+                </p>
+                <button class="btn-primary" onclick="alert('More details coming soon!')">View Role</button>
+            </article>
 
             <!-- TUM -->
-            <div class="timeline-node">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <span class="date-pill">Jul 2024 - Dec 2024</span>
-                    <h3 style="color:var(--text-main); margin-bottom:0.2rem;">Student Research Assistant</h3>
-                    <h4 style="color:var(--accent-cyan); margin-bottom:1rem;">Technical University of Munich</h4>
-                    <p style="color:var(--text-muted); font-size:0.95rem;">
-                        Chair of Hydrology and River Basin Management. Worked on hydrological modeling and data analysis
-                        for river basin management projects.
-                    </p>
+            <article class="bento-item">
+                <div class="card-header">
+                    <i class="fa-solid fa-graduation-cap card-icon"></i>
+                    <span class="card-tag">Jul 2024 - Dec 2024</span>
                 </div>
-            </div>
+                <h3 class="card-title">Research Assistant</h3>
+                <h4 class="card-sub">Technical University of Munich</h4>
+                <p class="card-desc">
+                    Worked on hydrological modeling and data analysis for river basin management projects.
+                </p>
+            </article>
 
             <!-- RISE -->
-            <div class="timeline-node">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <span class="date-pill">Sep 2021 - Sep 2023</span>
-                    <h3 style="color:var(--text-main); margin-bottom:0.2rem;">Environmental Engineer</h3>
-                    <h4 style="color:var(--accent-cyan); margin-bottom:1rem;">Research Institute for Sustainable
-                        Environment (RISE)</h4>
-                    <p style="color:var(--text-muted); font-size:0.95rem;">
-                        Led environmental impact assessments and designed sustainable engineering solutions for
-                        community projects in Kathmandu.
-                    </p>
+            <article class="bento-item">
+                <div class="card-header">
+                    <i class="fa-solid fa-seedling card-icon"></i>
+                    <span class="card-tag">Sep 2021 - Sep 2023</span>
                 </div>
-            </div>
+                <h3 class="card-title">Environmental Engineer</h3>
+                <h4 class="card-sub">RISE (Kathmandu)</h4>
+                <p class="card-desc">
+                    Led environmental impact assessments and designed sustainable engineering solutions for community
+                    projects.
+                </p>
+            </article>
 
             <!-- Upwork -->
-            <div class="timeline-node">
-                <div class="timeline-dot"></div>
-                <div class="timeline-card">
-                    <span class="date-pill">Aug 2021 - Apr 2022</span>
-                    <h3 style="color:var(--text-main); margin-bottom:0.2rem;">Freelance GIS Analyst</h3>
-                    <h4 style="color:var(--accent-cyan); margin-bottom:1rem;">Upwork</h4>
-                    <p style="color:var(--text-muted); font-size:0.95rem;">
-                        Delivered geospatial analysis and mapping solutions for international clients, focusing on
-                        remote sensing and environmental data visualization.
-                    </p>
+            <article class="bento-item bento-span-2">
+                <div class="card-header">
+                    <i class="fa-solid fa-laptop-code card-icon"></i>
+                    <span class="card-tag">Aug 2021 - Apr 2022</span>
                 </div>
-            </div>
+                <h3 class="card-title">Freelance GIS Analyst</h3>
+                <h4 class="card-sub">Upwork (Remote)</h4>
+                <p class="card-desc">
+                    Delivered geospatial analysis and mapping solutions for international clients, focusing on remote
+                    sensing and environmental data visualization.
+                </p>
+                <a href="https://www.upwork.com/freelancers/~01af05e3f4340798e1" target="_blank"
+                    class="btn-primary">View Profile</a>
+            </article>
 
         </div>
-    </main>
+    </section>
 
     <script src="script.js"></script>
 </body>

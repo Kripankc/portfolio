@@ -58,8 +58,8 @@ function initScrollAnimations() {
         });
     }, observerOptions);
 
-    // Target Elements: Timeline Nodes, Bento Boxes, Hero Text
-    const targets = document.querySelectorAll('.timeline-node, .bento-box, .hero-label, .hero-title, .hero-subtitle, .hero-actions, .project-card');
+    // Target Elements: Bento Items, Hero Text
+    const targets = document.querySelectorAll('.bento-item, .hero-label, .hero-title, .hero-subtitle, .hero-actions, .page-title, .page-desc');
 
     targets.forEach((el, index) => {
         // Set initial state via JS to avoid FOUC if JS fails
