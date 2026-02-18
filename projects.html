@@ -38,6 +38,9 @@
 
 <body>
 
+    <div class="mesh-bg"></div>
+    <div class="mesh-cursor"></div>
+
     <!-- Navigation -->
     <nav class="nav-bar">
         <div class="container nav-container">
@@ -89,7 +92,7 @@
                     Reduced precipitation estimation errors by 45.4% using a novel directional DEM smoothing and
                     stratified kriging framework.
                 </p>
-                <button class="btn-primary-glass" onclick="openModal('modal-precip')">View Details</button>
+                <button class="btn-primary" onclick="openModal('modal-precip')">View Details</button>
             </article>
 
             <!-- 2. Memory Optimizer -->
@@ -105,7 +108,7 @@
                 <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
                     Copy-On-Write (COW) shared memory to optimize RAM for raster processing.
                 </p>
-                <button class="btn-primary-glass" onclick="openModal('modal-memory')">View Details</button>
+                <button class="btn-primary" onclick="openModal('modal-memory')">View Details</button>
             </article>
 
             <!-- 3. Voronoi Solver -->
@@ -120,7 +123,7 @@
                 <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
                     High-performance algorithm for generating Voronoi diagrams on raster grids.
                 </p>
-                <button class="btn-primary-glass" onclick="openModal('modal-voronoi')">View Details</button>
+                <button class="btn-primary" onclick="openModal('modal-voronoi')">View Details</button>
             </article>
 
             <!-- 4. Flood Risk -->
@@ -136,7 +139,7 @@
                 <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
                     Micro-level flood risk assessment utilizing high-res topography.
                 </p>
-                <button class="btn-primary-glass" onclick="openModal('modal-flood')">View Details</button>
+                <button class="btn-primary" onclick="openModal('modal-flood')">View Details</button>
             </article>
 
             <!-- 5. Snowmelt -->
@@ -151,7 +154,7 @@
                 <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
                     Physically-based snowmelt model integrating GEE radiation data.
                 </p>
-                <button class="btn-primary-glass" onclick="openModal('modal-snow')">View Details</button>
+                <button class="btn-primary" onclick="openModal('modal-snow')">View Details</button>
             </article>
 
             <!-- 6. Glacier Dynamics -->
@@ -167,7 +170,7 @@
                 <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
                     Long-term analysis (1990-2020) of glacier changes using ML.
                 </p>
-                <button class="btn-primary-glass" onclick="openModal('modal-glacier')">View Details</button>
+                <button class="btn-primary" onclick="openModal('modal-glacier')">View Details</button>
             </article>
 
             <!-- 7. LULC -->
@@ -183,146 +186,13 @@
                 <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
                     Quantified LULC changes in Panauti/Banepa Valley following 2015 earthquake.
                 </p>
-                <button class="btn-primary-glass" onclick="openModal('modal-lulc')">View Details</button>
+                <button class="btn-primary" onclick="openModal('modal-lulc')">View Details</button>
             </article>
 
         </div>
     </section>
 
-    <!-- Modals (Focus System) -->
-    <div id="modal-overlay" class="modal-overlay">
-
-        <!-- Precipitation Modal -->
-        <div id="modal-precip" class="modal-box">
-            <button class="modal-close" onclick="closeModal('modal-precip')">&times;</button>
-            <div class="modal-content-side">
-                <h2 class="modal-title">Precipitation Modeling</h2>
-                <span class="modal-meta">Grade 1.0 • Master's Project</span>
-                <p class="modal-desc">
-                    Developed and implemented a novel directional DEM smoothing and stratified kriging framework,
-                    reducing precipitation estimation errors by 45.4% and enhancing the elevation-precipitation
-                    correlation for hydrological applications.
-                </p>
-                <div class="modal-actions">
-                    <a href="https://github.com/Kripankc/Study_Project" target="_blank" class="btn-primary-glass"><i
-                            class="fa-brands fa-github"></i> View Code</a>
-                    <a href="#" class="btn-glass"><i class="fa-solid fa-file-pdf"></i> Read Abstract</a>
-                </div>
-            </div>
-            <div class="modal-preview-side"></div>
-        </div>
-
-        <!-- Memory Optimizer -->
-        <div id="modal-memory" class="modal-box">
-            <button class="modal-close" onclick="closeModal('modal-memory')">&times;</button>
-            <div class="modal-content-side">
-                <h2 class="modal-title">Geospatial Memory Optimizer</h2>
-                <span class="modal-meta">Python Tool • Performance</span>
-                <p class="modal-desc">
-                    A specialized Python framework designed to handle large-scale geospatial data processing by
-                    implementing Copy-On-Write (COW) shared memory architecture. Significantly reduces RAM overhead.
-                </p>
-                <div class="modal-actions">
-                    <a href="https://github.com/Kripankc/geospatial-memory-optimizer" target="_blank"
-                        class="btn-primary-glass"><i class="fa-brands fa-github"></i> View Code</a>
-                    <a href="#" class="btn-glass"><i class="fa-solid fa-file-code"></i> Read Abstract</a>
-                </div>
-            </div>
-            <div class="modal-preview-side"></div>
-        </div>
-
-        <!-- Voronoi Solver -->
-        <div id="modal-voronoi" class="modal-box">
-            <button class="modal-close" onclick="closeModal('modal-voronoi')">&times;</button>
-            <div class="modal-content-side">
-                <h2 class="modal-title">Raster Voronoi Solver</h2>
-                <span class="modal-meta">Algorithm • Spatial Analysis</span>
-                <p class="modal-desc">
-                    An efficient algorithm implementation for generating Voronoi diagrams directly on raster grids.
-                    Surpasses traditional vector-based methods in speed for specific tasks.
-                </p>
-                <div class="modal-actions">
-                    <a href="https://github.com/Kripankc/raster-voronoi-solver" target="_blank"
-                        class="btn-primary-glass"><i class="fa-brands fa-github"></i> View Code</a>
-                    <a href="#" class="btn-glass"><i class="fa-solid fa-file-code"></i> Read Abstract</a>
-                </div>
-            </div>
-            <div class="modal-preview-side"></div>
-        </div>
-
-        <!-- Flood Risk -->
-        <div id="modal-flood" class="modal-box">
-            <button class="modal-close" onclick="closeModal('modal-flood')">&times;</button>
-            <div class="modal-content-side">
-                <h2 class="modal-title">Flood Risk Reduction</h2>
-                <span class="modal-meta">Roßhaupten • Collaborative Study</span>
-                <p class="modal-desc">
-                    Modeled hydrological response and analyzed runoff mitigation strategies using high-resolution
-                    geospatial parameters. Applied analytical skills to spatially data to develop recommendations.
-                </p>
-                <div class="modal-actions">
-                    <a href="#" class="btn-primary-glass"><i class="fa-brands fa-github"></i> View Code</a>
-                    <a href="#" class="btn-glass"><i class="fa-solid fa-file-pdf"></i> Read Abstract</a>
-                </div>
-            </div>
-            <div class="modal-preview-side"></div>
-        </div>
-
-        <!-- Snowmelt -->
-        <div id="modal-snow" class="modal-box">
-            <button class="modal-close" onclick="closeModal('modal-snow')">&times;</button>
-            <div class="modal-content-side">
-                <h2 class="modal-title">Snowmelt Runoff Modeling</h2>
-                <span class="modal-meta">Inn River Basin • Research</span>
-                <p class="modal-desc">
-                    Developed a physically-based snowmelt runoff model integrating satellite-derived radiation data to
-                    improve model accuracy using GEE and Python.
-                </p>
-                <div class="modal-actions">
-                    <a href="#" class="btn-primary-glass"><i class="fa-brands fa-github"></i> View Code</a>
-                    <a href="#" class="btn-glass"><i class="fa-solid fa-file-pdf"></i> Read Abstract</a>
-                </div>
-            </div>
-            <div class="modal-preview-side"></div>
-        </div>
-
-        <!-- Glacier -->
-        <div id="modal-glacier" class="modal-box">
-            <button class="modal-close" onclick="closeModal('modal-glacier')">&times;</button>
-            <div class="modal-content-side">
-                <h2 class="modal-title">Glacier Dynamics in Nepal</h2>
-                <span class="modal-meta">Marshyangdi Basin • ML & RS</span>
-                <p class="modal-desc">
-                    Investigated long-term glacier dynamics (1990-2020) using Machine Learning on multi-temporal
-                    satellite imagery to distinguish clean vs. debris-covered ice.
-                </p>
-                <div class="modal-actions">
-                    <a href="#" class="btn-primary-glass"><i class="fa-brands fa-github"></i> View Code</a>
-                    <a href="#" class="btn-glass"><i class="fa-solid fa-file-pdf"></i> Read Abstract</a>
-                </div>
-            </div>
-            <div class="modal-preview-side"></div>
-        </div>
-
-        <!-- LULC -->
-        <div id="modal-lulc" class="modal-box">
-            <button class="modal-close" onclick="closeModal('modal-lulc')">&times;</button>
-            <div class="modal-content-side">
-                <h2 class="modal-title">Post-Disaster LULC</h2>
-                <span class="modal-meta">Panauti/Banepa • Change Detection</span>
-                <p class="modal-desc">
-                    Analyzed and quantified LULC change patterns following the 2015 earthquake using Remote Sensing and
-                    ground validation.
-                </p>
-                <div class="modal-actions">
-                    <a href="#" class="btn-primary-glass"><i class="fa-brands fa-github"></i> View Code</a>
-                    <a href="#" class="btn-glass"><i class="fa-solid fa-file-pdf"></i> Read Abstract</a>
-                </div>
-            </div>
-            <div class="modal-preview-side"></div>
-        </div>
-
-    </div>
+    <!-- Modals are injected by script.js -->
 
     <script src="script.js"></script>
 </body>

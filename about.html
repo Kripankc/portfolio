@@ -7,81 +7,12 @@
     <title>About | Kripan K.C.</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-            margin-bottom: 4rem;
-        }
-
-        .about-img-container {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            aspect-ratio: 1/1;
-            background: var(--bg-slate);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border);
-        }
-
-        .about-img-placeholder {
-            font-size: 8rem;
-            color: var(--accent-dim);
-        }
-
-        .section-sub {
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section-sub::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-            margin-left: 1rem;
-        }
-
-        .list-item {
-            margin-bottom: 1rem;
-            color: var(--text-muted);
-        }
-
-        .list-item strong {
-            color: var(--text-main);
-            display: block;
-            margin-bottom: 0.2rem;
-        }
-
-        .list-item span {
-            font-size: 0.9em;
-            opacity: 0.8;
-        }
-
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-img-container {
-                max-width: 300px;
-                margin: 0 auto;
-            }
-        }
-    </style>
 </head>
 
 <body>
+
+    <div class="mesh-bg"></div>
+    <div class="mesh-cursor"></div>
 
     <nav class="nav-bar">
         <div class="container nav-container">
@@ -98,105 +29,83 @@
                 <li><a href="experience.html" class="nav-link">Experience</a></li>
                 <li><a href="projects.html" class="nav-link">Projects</a></li>
             </ul>
+        </div>
     </nav>
 
-    <main class="page-header container">
-        <h1 class="page-title">Personal Story</h1>
-        <p class="page-desc">Environmental Engineering Graduate & Geospatial Specialist.</p>
+    <main class="container section">
+        <h1 class="hero-title" style="text-align:center;">Beyond the Resume</h1>
+
+        <div class="bento-grid">
+
+            <!-- Bio - Large -->
+            <div class="bento-box bento-large">
+                <i class="fa-solid fa-user-astronaut bento-icon"></i>
+                <h3 class="bento-title">Who I Am</h3>
+                <p class="bento-text">
+                    I am an Environmental Engineer and Geospatial Data Scientist specializing in modeling environmental
+                    risks. With a background in both engineering and advanced GIS, I bridge the gap between physical
+                    environmental processes and digital data solutions. Currently based in Munich, Germany.
+                </p>
+            </div>
+
+            <!-- Education - Large -->
+            <div class="bento-box bento-large">
+                <i class="fa-solid fa-graduation-cap bento-icon"></i>
+                <h3 class="bento-title">Education</h3>
+                <div style="margin-bottom:1rem;">
+                    <strong style="color:var(--text-main);">M.Sc. Environmental Engineering</strong><br>
+                    <span style="color:var(--accent-cyan);">Technical University of Munich (TUM)</span><br>
+                    <span class="text-mono">2023 - Present (Specialization: Hydrology & Water Resources)</span>
+                </div>
+                <div>
+                    <strong style="color:var(--text-main);">B.Tech. Environmental Engineering</strong><br>
+                    <span style="color:var(--accent-cyan);">Kathmandu University</span><br>
+                    <span class="text-mono">2016 - 2020 (GPA: 3.65/4.0)</span>
+                </div>
+            </div>
+
+            <!-- Honors -->
+            <div class="bento-box">
+                <i class="fa-solid fa-medal bento-icon"></i>
+                <h3 class="bento-title">Honors</h3>
+                <p class="bento-text">
+                    <strong>Deutschlandstipendium</strong> (2024-2026)<br>
+                    Selected for outstanding academic performance and social commitment.
+                </p>
+            </div>
+
+            <!-- Leadership -->
+            <div class="bento-box">
+                <i class="fa-solid fa-chalkboard-user bento-icon"></i>
+                <h3 class="bento-title">Leadership</h3>
+                <p class="bento-text">
+                    <strong>Licensed Instructor (ArcGIS)</strong><br>
+                    Conducted training sessions on geospatial applications for disaster risk reduction.
+                </p>
+            </div>
+
+            <!-- Volunteering 1 -->
+            <div class="bento-box">
+                <i class="fa-solid fa-recycle bento-icon"></i>
+                <h3 class="bento-title">Volunteering</h3>
+                <p class="bento-text">
+                    <strong>Plastic Waste Trainer</strong><br>
+                    Led workshops on sustainable waste management practices.
+                </p>
+            </div>
+
+            <!-- Volunteering 2 -->
+            <div class="bento-box">
+                <i class="fa-solid fa-hand-holding-heart bento-icon"></i>
+                <h3 class="bento-title">Community</h3>
+                <p class="bento-text">
+                    <strong>Flood Relief Program</strong><br>
+                    Coordinated relief distribution in flood-affected regions.
+                </p>
+            </div>
+
+        </div>
     </main>
-
-    <section class="container" style="padding-bottom: 120px;">
-        <div class="about-grid">
-
-            <div class="about-img-container reveal">
-                <i class="fa-solid fa-user about-img-placeholder"></i>
-            </div>
-
-            <div class="about-text reveal">
-                <h2 style="margin-bottom:1.5rem;">Overview</h2>
-                <p style="color:var(--text-muted); margin-bottom:1.5rem;">
-                    I am an Environmental Engineering graduate (B.Tech, Kathmandu University) currently pursuing my
-                    <strong>M.Sc. in Environmental Engineering at the Technical University of Munich (TUM)</strong>. My
-                    specialization focuses on Environmental Hazards, Risk Management, and Water Resources.
-                </p>
-                <p style="color:var(--text-muted); margin-bottom:1.5rem;">
-                    My professional journey bridges the gap between traditional environmental modeling and modern data
-                    science. With experience in advanced GIS, Remote Sensing, and Python programming, I build tools to
-                    analyze complex hazard scenarios—from flood risk in Bavaria to glacier dynamics in Nepal.
-                </p>
-                <p style="color:var(--text-muted); margin-bottom:2rem;">
-                    Currently, I apply these skills as an Intern on the <strong>Geospatial Solutions Team at Munich
-                        Re</strong>, developing production-grade software for climate risk assessment.
-                </p>
-
-                <div style="margin-top: 2rem;">
-                    <a href="Kripan_CV.pdf" target="_blank" class="btn btn-outline"><i class="fa-solid fa-download"
-                            style="margin-right:0.5rem;"></i> Download CV</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
-
-            <!-- Awards -->
-            <div class="reveal">
-                <h3 class="section-sub"><i class="fa-solid fa-trophy"></i> Honors & Awards</h3>
-                <div class="glass-card">
-                    <div class="list-item">
-                        <strong>Deutschlandstipendium (2025-2026)</strong>
-                        <span>Awarded for academic excellence and commitment to social engagement.</span>
-                    </div>
-                    <div class="list-item" style="margin-bottom:0;">
-                        <strong>Deutschlandstipendium (2024-2025)</strong>
-                        <span>Awarded for academic excellence and commitment to social engagement.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Volunteering -->
-            <div class="reveal">
-                <h3 class="section-sub"><i class="fa-solid fa-hand-holding-heart"></i> Volunteering</h3>
-                <div class="glass-card">
-                    <div class="list-item">
-                        <strong>Trainer – Plastic Waste Management</strong>
-                        <span>Regen Nepal Pvt. Ltd. (March 2025) — Delivered capacity-building sessions on sustainable
-                            waste management.</span>
-                    </div>
-                    <div class="list-item">
-                        <strong>Restoring Lives: Flood Relief</strong>
-                        <span>Sindupalchok (July 2023) — Engineered solutions for resettlement as a Junior Environmental
-                            Engineer.</span>
-                    </div>
-                    <div class="list-item" style="margin-bottom:0;">
-                        <strong>Plantation Campaign</strong>
-                        <span>Dhulikhel (Sep 2022) — British Council's Road to COP26 campaign.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mentorship -->
-            <div class="reveal">
-                <h3 class="section-sub"><i class="fa-solid fa-chalkboard-user"></i> Leadership & Mentorship</h3>
-                <div class="glass-card">
-                    <div class="list-item">
-                        <strong>Guest Lecturer: GIS for Disaster Risk</strong>
-                        <span>Delivered online session for undergraduates on GIS/RS for disaster reduction (March
-                            2025).</span>
-                    </div>
-                    <div class="list-item">
-                        <strong>ArcGIS Instructor</strong>
-                        <span>Kathmandu University (April 2023) — Instructed students via FECAM.</span>
-                    </div>
-                    <div class="list-item" style="margin-bottom:0;">
-                        <strong>Workshop Facilitator</strong>
-                        <span>Satellite Generated Atmospheric Data Workshop (March 2023).</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
 
     <script src="script.js"></script>
 </body>

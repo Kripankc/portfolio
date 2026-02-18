@@ -11,7 +11,11 @@
 
 <body>
 
-    <!-- Navigation -->
+    <!-- Mesh Gradient Background -->
+    <div class="mesh-bg"></div>
+    <div class="mesh-cursor"></div>
+
+    <!-- Navigation (Sticky/Fixed) -->
     <nav class="nav-bar">
         <div class="container nav-container">
             <a href="index.html" class="brand">Kripan<span>.KC</span></a>
@@ -32,7 +36,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Full Screen Flex Center) -->
     <main class="hero-wrapper container">
         <div class="hero-content">
             <span class="hero-label reveal">Environmental Engineer & Geospatial Data Scientist</span>
@@ -47,27 +51,6 @@
                 <a href="about.html" class="btn btn-outline">About Me</a>
             </div>
         </div>
-
-        <!-- 3D Rotation Controller Demo -->
-        <div class="rotation-stage reveal" style="transition-delay: 0.4s; margin-left: auto; margin-right: 0;">
-            <div class="rotation-cube">
-                <div class="cube-face face-front"><i class="fa-solid fa-earth-americas"></i></div>
-                <div class="cube-face face-back"><i class="fa-solid fa-code"></i></div>
-                <div class="cube-face face-right"><i class="fa-solid fa-layer-group"></i></div>
-                <div class="cube-face face-left"><i class="fa-solid fa-database"></i></div>
-                <div class="cube-face face-top"><i class="fa-solid fa-satellite"></i></div>
-                <div class="cube-face face-bottom"><i class="fa-solid fa-water"></i></div>
-            </div>
-
-            <div class="rotation-controls">
-                <button class="control-btn" onclick="rotateCube('left')"><i class="fa-solid fa-arrow-left"></i></button>
-                <button class="control-btn" onclick="rotateCube('right')"><i
-                        class="fa-solid fa-arrow-right"></i></button>
-            </div>
-            <p style="text-align:center; font-size:0.8rem; color:var(--text-muted); margin-top:1rem;">Interactive 3D
-                Preview</p>
-        </div>
-
     </main>
 
     <script src="script.js"></script>

@@ -7,82 +7,12 @@
     <title>Experience | Kripan K.C.</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--accent), transparent);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 3rem;
-            margin-bottom: 4rem;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -9px;
-            top: 0;
-            width: 20px;
-            height: 20px;
-            background: var(--bg-deep);
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .role-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .company {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .date {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .achievement-list li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .achievement-list li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-    </style>
 </head>
 
 <body>
+
+    <div class="mesh-bg"></div>
+    <div class="mesh-cursor"></div>
 
     <nav class="nav-bar">
         <div class="container nav-container">
@@ -102,84 +32,69 @@
         </div>
     </nav>
 
-    <main class="page-header container">
-        <h1 class="page-title">Professional Journey</h1>
-        <p class="page-desc">Bridging environmental science and software engineering across academia and industry.</p>
-    </main>
+    <main class="container section">
+        <h1 class="hero-title" style="text-align:center;">Professional Journey</h1>
 
-    <section class="container" style="padding-bottom: 120px;">
         <div class="timeline">
-
             <!-- Munich Re -->
-            <div class="timeline-item reveal">
+            <div class="timeline-node">
                 <div class="timeline-dot"></div>
-                <h3 class="role-title">Intern – Geospatial Solutions Team</h3>
-                <span class="company">Munich Re <i class="fa-solid fa-shield-halved"
-                        style="margin-left:0.5rem; font-size:0.9em;"></i></span>
-                <span class="date">Sep 2025 - Present</span>
-                <div class="glass-card">
-                    <ul class="achievement-list">
-                        <li>Developing geospatial solutions for climate and hazard risk modeling using advanced Remote
-                            Sensing technology.</li>
-                        <li>Processing large-scale satellite products for disaster models and integrating them into risk
-                            analysis pipelines.</li>
-                        <li>Building APIs to operationalize GIS and remote sensing algorithms for production-level risk
-                            assessment platforms.</li>
-                    </ul>
+                <div class="timeline-card">
+                    <span class="date-pill">Sep 2025 - Present</span>
+                    <h3 style="color:var(--text-main); margin-bottom:0.2rem;">Intern – Geospatial Solutions</h3>
+                    <h4 style="color:var(--accent-cyan); margin-bottom:1rem;">Munich Re (Munich, Germany)</h4>
+                    <p style="color:var(--text-muted); font-size:0.95rem;">
+                        Contributing to the Geospatial Solutions Team by developing scalable data processing pipelines
+                        and analyzing environmental risks for reinsurance applications.
+                    </p>
                 </div>
             </div>
 
             <!-- TUM -->
-            <div class="timeline-item reveal">
+            <div class="timeline-node">
                 <div class="timeline-dot"></div>
-                <h3 class="role-title">Student Research Assistant</h3>
-                <span class="company">Technical University of Munich (TUM) <i class="fa-solid fa-university"
-                        style="margin-left:0.5rem; font-size:0.9em;"></i></span>
-                <span class="date">Nov 2024 - Sep 2025</span>
-                <div class="glass-card">
-                    <ul class="achievement-list">
-                        <li>Chair of Hydrology and River Basin Management.</li>
-                        <li>Conducted flood risk analysis using remote sensing, modeling, and advanced data techniques
-                            to support sustainable water and hazard management.</li>
-                    </ul>
+                <div class="timeline-card">
+                    <span class="date-pill">Jul 2024 - Dec 2024</span>
+                    <h3 style="color:var(--text-main); margin-bottom:0.2rem;">Student Research Assistant</h3>
+                    <h4 style="color:var(--accent-cyan); margin-bottom:1rem;">Technical University of Munich</h4>
+                    <p style="color:var(--text-muted); font-size:0.95rem;">
+                        Chair of Hydrology and River Basin Management. Worked on hydrological modeling and data analysis
+                        for river basin management projects.
+                    </p>
                 </div>
             </div>
 
             <!-- RISE -->
-            <div class="timeline-item reveal">
+            <div class="timeline-node">
                 <div class="timeline-dot"></div>
-                <h3 class="role-title">Environmental Engineer</h3>
-                <span class="company">Research Institute for Sustainable Environment Pvt. Ltd. <i
-                        class="fa-solid fa-leaf" style="margin-left:0.5rem; font-size:0.9em;"></i></span>
-                <span class="date">Jun 2023 - Apr 2024</span>
-                <div class="glass-card">
-                    <ul class="achievement-list">
-                        <li>Engaged in Environmental Impact Assessments (EIA), environmental modeling, GIS, and Remote
-                            Sensing applications in sustainable development.</li>
-                        <li>Tutor for graduate-level courses: Flood Risk/Flood Management and Urban Hydrology.</li>
-                    </ul>
+                <div class="timeline-card">
+                    <span class="date-pill">Sep 2021 - Sep 2023</span>
+                    <h3 style="color:var(--text-main); margin-bottom:0.2rem;">Environmental Engineer</h3>
+                    <h4 style="color:var(--accent-cyan); margin-bottom:1rem;">Research Institute for Sustainable
+                        Environment (RISE)</h4>
+                    <p style="color:var(--text-muted); font-size:0.95rem;">
+                        Led environmental impact assessments and designed sustainable engineering solutions for
+                        community projects in Kathmandu.
+                    </p>
                 </div>
             </div>
 
             <!-- Upwork -->
-            <div class="timeline-item reveal">
+            <div class="timeline-node">
                 <div class="timeline-dot"></div>
-                <h3 class="role-title">Freelance GIS Analyst</h3>
-                <span class="company">Upwork <i class="fa-solid fa-laptop-code"
-                        style="margin-left:0.5rem; font-size:0.9em;"></i></span>
-                <span class="date">Apr 2020 - Mar 2024</span>
-                <div class="glass-card">
-                    <ul class="achievement-list">
-                        <li>Provided geospatial analysis for global clients, including suitability modeling, remote
-                            sensing data processing, and spatial data analysis.</li>
-                        <li>Developed an evapotranspiration (ET) model in Google Earth Engine (GEE) by integrating
-                            satellite-derived inputs (LST, soil moisture, LULC, Vegetation Indices).</li>
-                    </ul>
+                <div class="timeline-card">
+                    <span class="date-pill">Aug 2021 - Apr 2022</span>
+                    <h3 style="color:var(--text-main); margin-bottom:0.2rem;">Freelance GIS Analyst</h3>
+                    <h4 style="color:var(--accent-cyan); margin-bottom:1rem;">Upwork</h4>
+                    <p style="color:var(--text-muted); font-size:0.95rem;">
+                        Delivered geospatial analysis and mapping solutions for international clients, focusing on
+                        remote sensing and environmental data visualization.
+                    </p>
                 </div>
             </div>
 
         </div>
-    </section>
+    </main>
 
     <script src="script.js"></script>
 </body>

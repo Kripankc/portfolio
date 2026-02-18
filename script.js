@@ -1,324 +1,215 @@
 /* ============================================================
-   script.js — Portfolio Logic V4 (Senior Upgrade)
+   script.js — Portfolio Logic V5 (Reconstruction)
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    initSharedUI();
-    // initCursor(); // Removed as per request
-    initParallax();
-    initScrollReveal();
-    initRotationController(); // Main Hero Cube
-    initCommandPalette();
+    initMeshGradient();
+    initScrollAnimations();
     initMobileMenu();
-    initProjectLogic(); // Enhanced Modal Logic
+    initModalSystem();
 });
 
 /* ------------------------------------------------------------
-   1. Shared UI Injection (FAB, Background)
+   1. Modern Mesh Gradient Mouse Follow
    ------------------------------------------------------------ */
-function initSharedUI() {
-    const body = document.body;
-
-    // Parallax Background
-    const parallaxContainer = document.createElement('div');
-    parallaxContainer.className = 'parallax-bg';
-    for (let i = 0; i < 6; i++) {
-        const shape = document.createElement('div');
-        shape.className = 'floating-shape';
-        const size = Math.random() * 250 + 100;
-        shape.style.width = `${size}px`;
-        shape.style.height = `${size}px`;
-        shape.style.background = i % 2 === 0 ? 'var(--accent-purple)' : 'var(--accent-cyan)';
-        shape.style.left = `${Math.random() * 100}%`;
-        shape.style.top = `${Math.random() * 100}%`;
-        parallaxContainer.appendChild(shape);
+function initMeshGradient() {
+    // Create the background elements if they don't exist
+    if (!document.querySelector('.mesh-bg')) {
+        const bg = document.createElement('div');
+        bg.className = 'mesh-bg';
+        document.body.prepend(bg); // Very back
     }
-    body.prepend(parallaxContainer);
-
-    // FAB & Command UI
-    const fabHTML = `
-        <div class="fab-container">
-            <div class="fab-menu">
-                <ul style="text-align:right;">
-                    <li style="margin-bottom:0.5rem;"><a href="index.html" style="color:var(--text-main);">Home</a></li>
-                    <li style="margin-bottom:0.5rem;"><a href="projects.html" style="color:var(--text-main);">Projects</a></li>
-                    <li><button onclick="toggleCommandPalette()" style="background:none; border:none; color:var(--accent-cyan); cursor:pointer;">Cmd+K</button></li>
-                </ul>
-            </div>
-            <button class="fab-btn">
-                <i class="fa-solid fa-plus"></i>
-            </button>
-        </div>
-        <div class="cmd-overlay">
-            <div class="cmd-modal">
-                <input type="text" class="cmd-input" placeholder="Type a command or search...">
-                <div class="cmd-list"></div>
-            </div>
-        </div>
-    `;
-    body.insertAdjacentHTML('beforeend', fabHTML);
-
-    const fabBtn = document.querySelector('.fab-btn');
-    const fabContainer = document.querySelector('.fab-container');
-    if (fabBtn) {
-        fabBtn.addEventListener('click', () => {
-            fabContainer.classList.toggle('active');
-            const icon = fabBtn.querySelector('i');
-            if (fabContainer.classList.contains('active')) {
-                icon.className = 'fa-solid fa-xmark';
-            } else {
-                icon.className = 'fa-solid fa-plus';
-            }
-        });
+    if (!document.querySelector('.mesh-cursor')) {
+        const cursor = document.createElement('div');
+        cursor.className = 'mesh-cursor';
+        document.body.prepend(cursor); // Just in front of bg
     }
+
+    const cursorEl = document.querySelector('.mesh-cursor');
+
+    // Mouse Interaction
+    window.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+
+        // Use transform for performance
+        // Center the 600px circle on cursor
+        cursorEl.style.transform = `translate(${x - 300}px, ${y - 300}px)`;
+    });
 }
 
 /* ------------------------------------------------------------
-   2. Cmd+K Command Palette
+   2. Scroll Animations (Intersection Observer)
    ------------------------------------------------------------ */
-function initCommandPalette() {
-    const overlay = document.querySelector('.cmd-overlay');
-    const input = document.querySelector('.cmd-input');
-    const list = document.querySelector('.cmd-list');
-
-    const commands = [
-        { title: 'Home', icon: 'fa-house', action: () => window.location.href = 'index.html' },
-        { title: 'Projects', icon: 'fa-briefcase', action: () => window.location.href = 'projects.html' },
-        { title: 'Experience', icon: 'fa-timeline', action: () => window.location.href = 'experience.html' },
-        { title: 'Skills', icon: 'fa-microchip', action: () => window.location.href = 'skills.html' },
-        { title: 'About', icon: 'fa-user', action: () => window.location.href = 'about.html' },
-        { title: 'Download CV', icon: 'fa-download', action: () => window.open('Kripan_CV.pdf', '_blank') }
-    ];
-
-    function renderCommands(filter = '') {
-        list.innerHTML = '';
-        const filtered = commands.filter(cmd => cmd.title.toLowerCase().includes(filter.toLowerCase()));
-
-        filtered.forEach((cmd, index) => {
-            const item = document.createElement('div');
-            item.className = 'cmd-item';
-            if (index === 0) item.classList.add('selected');
-            item.innerHTML = `
-                <i class="fa-solid ${cmd.icon}"></i>
-                <span>${cmd.title}</span> 
-                <span class="cmd-shortcut">Ret</span>
-            `;
-            item.addEventListener('click', () => {
-                cmd.action();
-                toggleCommandPalette(false);
-            });
-            list.appendChild(item);
-        });
-    }
-
-    window.toggleCommandPalette = (show) => {
-        const isOpen = overlay.classList.contains('open');
-        const shouldOpen = show !== undefined ? show : !isOpen;
-        if (shouldOpen) {
-            overlay.classList.add('open');
-            input.value = '';
-            renderCommands();
-            setTimeout(() => input.focus(), 100);
-        } else {
-            overlay.classList.remove('open');
-        }
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px"
     };
 
-    document.addEventListener('keydown', (e) => {
-        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-            e.preventDefault();
-            toggleCommandPalette();
-        }
-        if (e.key === 'Escape' && overlay.classList.contains('open')) {
-            toggleCommandPalette(false);
-        }
-    });
-
-    overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) toggleCommandPalette(false);
-    });
-    input.addEventListener('input', (e) => renderCommands(e.target.value));
-}
-
-/* ------------------------------------------------------------
-   3. Parallax & Scroll Reveal
-   ------------------------------------------------------------ */
-function initParallax() {
-    const shapes = document.querySelectorAll('.floating-shape');
-    window.addEventListener('mousemove', (e) => {
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-        shapes.forEach((shape, i) => {
-            const speed = (i + 1) * 15;
-            shape.style.transform = `translate(${(x - 0.5) * speed}px, ${(y - 0.5) * speed}px)`;
-        });
-    });
-}
-
-function initScrollReveal() {
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, i * 50);
-                observer.unobserve(entry.target);
+                entry.target.classList.add('visible');
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target); // Trigger once
             }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    document.querySelectorAll('.reveal, .project-card, .bento-item').forEach(el => {
+    // Target Elements: Timeline Nodes, Bento Boxes, Hero Text
+    const targets = document.querySelectorAll('.timeline-node, .bento-box, .hero-label, .hero-title, .hero-subtitle, .hero-actions, .project-card');
+
+    targets.forEach((el, index) => {
+        // Set initial state via JS to avoid FOUC if JS fails
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        el.style.transition = `opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1) ${index * 0.1}s, transform 0.6s cubic-bezier(0.23, 1, 0.32, 1) ${index * 0.1}s`;
         observer.observe(el);
     });
 }
 
 /* ------------------------------------------------------------
-   4. Hero 3D Logic
+   3. Mobile Menu Logic
    ------------------------------------------------------------ */
-function initRotationController() {
-    const heroCube = document.querySelector('.rotation-stage .rotation-cube');
-    if (heroCube) {
-        let currentY = 45;
-        window.rotateCube = (direction) => {
-            if (direction === 'left') currentY -= 90;
-            if (direction === 'right') currentY += 90;
-            heroCube.style.setProperty('--rot-y', `${currentY}deg`);
-        };
+function initMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            // Animate hamburger if needed (CSS usually handles this via class)
+        });
     }
 }
 
 /* ------------------------------------------------------------
-   5. Enhanced Modal Logic (Focus System)
+   4. Project Focus System (The Modal)
    ------------------------------------------------------------ */
-function initProjectLogic() {
-
-    // Global Open Function
-    window.openModal = function (modalId) {
-        const modal = document.getElementById(modalId);
-        const overlay = document.getElementById('modal-overlay');
-
-        if (modal && overlay) {
-            overlay.style.display = 'flex'; // Ensure flex first
-            // Trigger reflow for transition
-            void overlay.offsetWidth;
-
-            overlay.classList.add('active'); // Fade in overlay
-
-            // Hide all modals first
-            document.querySelectorAll('.modal-box').forEach(m => {
-                m.style.display = 'none';
-                m.classList.remove('active');
-            });
-
-            modal.style.display = 'grid'; // Use Grid for new layout
-
-            // Inject 3D Preview if not present
-            inject3DPreviewInModal(modal);
-
-            document.body.style.overflow = 'hidden';
-        }
-    };
-
-    window.closeModal = function (modalId) {
-        const modal = document.getElementById(modalId);
-        const overlay = document.getElementById('modal-overlay');
-
-        if (overlay) {
-            overlay.classList.remove('active');
-            setTimeout(() => {
-                overlay.style.display = 'none';
-                if (modal) modal.style.display = 'none';
-                document.body.style.overflow = '';
-            }, 400); // Wait for opacity transition
-        }
-    };
-
-    // Filter Logic
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projects = document.querySelectorAll('.project-card');
-    if (filterBtns.length > 0) {
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const val = btn.getAttribute('data-filter');
-                projects.forEach(card => {
-                    const cats = card.getAttribute('data-categories');
-                    if (val === 'all' || (cats && cats.includes(val))) {
-                        card.style.display = 'block';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 50);
-                    } else {
-                        card.style.display = 'none';
-                        card.style.opacity = '0';
-                    }
-                });
-            });
-        });
-    }
-}
-
-/* 
-   Dynamic 3D Injection for Modals
-*/
-function inject3DPreviewInModal(modal) {
-    const previewContainer = modal.querySelector('.modal-preview-side');
-    if (!previewContainer) return;
-
-    // If already injected, just reset styling/rotation?
-    if (previewContainer.querySelector('.rotation-stage')) return;
-
-    // Create 3D Stage HTML
-    const cubeHTML = `
-        <div class="rotation-stage" style="width:180px; height:180px; margin-bottom:1rem;">
-            <div class="rotation-cube" id="cube-${modal.id}">
-                <div class="cube-face face-front"><i class="fa-solid fa-code"></i></div>
-                <div class="cube-face face-back"><i class="fa-solid fa-layer-group"></i></div>
-                <div class="cube-face face-right"><i class="fa-solid fa-database"></i></div>
-                <div class="cube-face face-left"><i class="fa-solid fa-server"></i></div>
-                <div class="cube-face face-top"><i class="fa-solid fa-satellite"></i></div>
-                <div class="cube-face face-bottom"><i class="fa-solid fa-microchip"></i></div>
+function initModalSystem() {
+    // Create Global Modal Overlay if not exists
+    if (!document.querySelector('.modal-overlay')) {
+        const overlay = document.createElement('div');
+        overlay.className = 'modal-overlay';
+        overlay.innerHTML = `
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                
+                <div class="project-3d-visual">
+                    <i class="fa-brands fa-github"></i>
+                </div>
+                
+                <div class="modal-details">
+                    <h2 class="modal-title">Project Title</h2>
+                    <p class="modal-desc" style="color:var(--text-muted); margin-bottom:2rem;">
+                        Project description goes here...
+                    </p>
+                    <div class="modal-actions">
+                        <a href="#" class="btn-primary modal-github" target="_blank">
+                            <i class="fa-brands fa-github"></i> GitHub Repo
+                        </a>
+                        <a href="#" class="btn-outline modal-abstract" target="_blank">
+                            <i class="fa-solid fa-file-pdf"></i> Abstract PDF
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="modal-3d-controls">
-            <span style="font-size:0.8rem; color:var(--text-muted);">Rotation:</span>
-            <select class="rotation-select" onchange="updateModalCube(this, 'cube-${modal.id}')">
-                <option value="0deg">0°</option>
-                <option value="90deg">90°</option>
-                <option value="180deg">180°</option>
-                <option value="270deg">270°</option>
-                <option value="rotate3d(1,1,1,45deg)">Complex</option>
-            </select>
-        </div>
-    `;
-    previewContainer.innerHTML = cubeHTML;
-}
+        `;
+        document.body.appendChild(overlay);
 
-window.initMobileMenu = function () {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
+        // Bind Close Events
+        const closeBtn = overlay.querySelector('.modal-close');
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeModal();
         });
     }
+
+    // Bind Open Events
+    // Assuming project cards have data attributes: data-title, data-desc, data-github, data-abstract
+    // Or we use existing inline onclicks and redirect them here. 
+    // Ideally, we rewrite inline onclicks to event listeners, but to be safe with existing HTML structure:
+    window.openModal = function (projectId) {
+        // Map projectId to content (Simulation since we don't have a DB)
+        // In a real refactor, create a content map.
+        const contentMap = {
+            'modal-precip': {
+                title: 'Precipitation Modeling Optimization',
+                desc: 'Developed and implemented a novel directional DEM smoothing and stratified kriging framework, reducing precipitation estimation errors by 45.4%. Grade 1.0 Master\'s Project.',
+                github: 'https://github.com/Kripankc/Study_Project',
+                tag: 'Study_Project'
+            },
+            'modal-memory': {
+                title: 'Geospatial Memory Optimizer',
+                desc: 'A specialized Python framework designed to handle large-scale geospatial data processing by implementing Copy-On-Write (COW) shared memory architecture. Significantly reduces RAM overhead.',
+                github: 'https://github.com/Kripankc/geospatial-memory-optimizer',
+                tag: 'Python Tool'
+            },
+            'modal-voronoi': {
+                title: 'Raster Voronoi Solver',
+                desc: 'High-performance algorithm for generating Voronoi diagrams directly on raster grids, optimized for environmental modeling.',
+                github: 'https://github.com/Kripankc/raster-voronoi-solver',
+                tag: 'Algorithm'
+            },
+            'modal-flood': {
+                title: 'Flood Risk Reduction in Roßhaupten',
+                desc: 'Micro-level flood risk assessment utilizing high-res topography and hydrological modeling. Analyzed runoff mitigation strategies (culverts, basins).',
+                github: '#',
+                tag: 'Risk Analysis'
+            },
+            'modal-snow': {
+                title: 'Snowmelt Runoff Modeling',
+                desc: 'Physically-based snowmelt model integrating satellite-derived radiation data via GEE for the Inn River Basin.',
+                github: '#',
+                tag: 'Hydrology'
+            },
+            'modal-glacier': {
+                title: 'Glacier Dynamics in Nepal',
+                desc: 'Long-term analysis (1990-2020) of glacier changes in the Marshyangdi river basin using ML and multi-temporal satellite imagery.',
+                github: '#',
+                tag: 'Climate Change'
+            },
+            'modal-lulc': {
+                title: 'Post-Disaster LULC Change',
+                desc: 'Quantified Land Use/Land Cover changes in Panauti/Banepa Valley following the 2015 earthquake using Remote Sensing.',
+                github: '#',
+                tag: 'Remote Sensing'
+            },
+            // Defaults for others
+            'default': {
+                title: 'Geospatial Project',
+                desc: 'Detailed analysis and modeling using advanced GIS techniques.',
+                github: '#',
+                tag: 'GIS'
+            }
+        };
+
+        const data = contentMap[projectId] || contentMap['default'];
+        const overlay = document.querySelector('.modal-overlay');
+
+        // Populate Data
+        overlay.querySelector('.modal-title').textContent = data.title;
+        overlay.querySelector('.modal-desc').textContent = data.desc;
+        overlay.querySelector('.modal-github').href = data.github;
+        // Abstract PDF link logic? For now uses # or same as github
+        overlay.querySelector('.modal-abstract').href = '#';
+
+        // Visual Icon
+        const icon = overlay.querySelector('.project-3d-visual i');
+        icon.className = projectId.includes('code') || projectId.includes('memory') ? 'fa-brands fa-python' : 'fa-solid fa-layer-group';
+
+        // Show
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
 }
 
-// Global helper for the select dropdown
-window.updateModalCube = function (select, cubeId) {
-    const cube = document.getElementById(cubeId);
-    const val = select.value;
-    if (val.includes('rotate3d')) {
-        cube.style.transform = val;
-    } else {
-        // Assume Y rotation
-        cube.style.transform = `rotateX(-15deg) rotateY(${val})`;
+function closeModal() {
+    const overlay = document.querySelector('.modal-overlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
     }
 }
