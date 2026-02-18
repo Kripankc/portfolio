@@ -58,88 +58,141 @@
 
     <main class="page-header container">
         <h1 class="page-title">Selected Works</h1>
-        <p class="page-desc">A collection of geospatial algorithms, machine learning models, and engineering tools.</p>
+        <p class="page-desc">A collection of geospatial algorithms, hydrological models, and engineering tools.</p>
     </main>
 
     <section class="container" style="padding-bottom: 120px;">
         <!-- Filter -->
         <div class="filter-bar">
             <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="GIS">GIS & Mapping</button>
-            <button class="filter-btn" data-filter="ML">Machine Learning</button>
-            <button class="filter-btn" data-filter="Software">Software Engineering</button>
-            <button class="filter-btn" data-filter="Research">Research</button>
+            <button class="filter-btn" data-filter="Research">Research & Papers</button>
+            <button class="filter-btn" data-filter="Tools">Engineering Tools</button>
+            <button class="filter-btn" data-filter="GIS">GIS & Analysis</button>
         </div>
 
         <!-- Grid -->
         <div class="grid projects-grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">
 
-            <!-- 1. Geospatial Memory Optimizer (New Placeholder) -->
-            <article class="glass-card project-card" data-categories="Software GIS">
+            <!-- 1. Precipitation Improvement (Master's Study) -->
+            <article class="glass-card project-card" data-categories="Research GIS">
+                <div class="card-header"
+                    style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
+                    <i class="fa-solid fa-cloud-rain" style="font-size: 2rem; color: var(--accent);"></i>
+                    <span
+                        style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">GRADE:
+                        1.0</span>
+                </div>
+                <h3 style="margin-bottom:0.5rem;">Precipitation Modeling Optimization</h3>
+                <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
+                    Reduced precipitation estimation errors by 45.4% using a directional DEM smoothing and stratified
+                    kriging framework.
+                </p>
+                <button class="btn-outline" onclick="openModal('modal-precip')"
+                    style="padding:0.5rem 1rem; width:100%; font-size:0.9rem;">View Abstract</button>
+            </article>
+
+            <!-- 2. Geospatial Memory Optimizer (New Tool) -->
+            <article class="glass-card project-card" data-categories="Tools Software">
                 <div class="card-header"
                     style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
                     <i class="fa-solid fa-memory" style="font-size: 2rem; color: var(--accent);"></i>
-                    <div style="display:flex; gap:0.5rem;">
-                        <span
-                            style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">PYTHON</span>
-                    </div>
+                    <span
+                        style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">PYTHON
+                        TOOL</span>
                 </div>
                 <h3 style="margin-bottom:0.5rem;">Geospatial Memory Optimizer</h3>
                 <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
-                    Optimized memory management for large-scale geospatial datasets using Copy-On-Write architecture.
+                    A Python tool implementing Copy-On-Write (COW) shared memory to optimize RAM usage for large-scale
+                    raster processing.
                 </p>
                 <button class="btn-outline" onclick="openModal('modal-memory')"
                     style="padding:0.5rem 1rem; width:100%; font-size:0.9rem;">View Details</button>
             </article>
 
-            <!-- 2. Raster Voronoi Solver (New Placeholder) -->
-            <article class="glass-card project-card" data-categories="GIS Algorithms">
+            <!-- 3. Raster Voronoi Solver (New Tool) -->
+            <article class="glass-card project-card" data-categories="Tools Software">
                 <div class="card-header"
                     style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
                     <i class="fa-solid fa-shapes" style="font-size: 2rem; color: var(--accent);"></i>
-                    <div style="display:flex; gap:0.5rem;">
-                        <span
-                            style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">ALGORITHMS</span>
-                    </div>
+                    <span
+                        style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">ALGORITHM</span>
                 </div>
                 <h3 style="margin-bottom:0.5rem;">Raster Voronoi Solver</h3>
                 <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
-                    High-performance algorithm for solving Voronoi diagrams on raster grids with improved computational
-                    efficiency.
+                    High-performance algorithm for generating Voronoi diagrams directly on raster grids, optimized for
+                    environmental modeling.
                 </p>
                 <button class="btn-outline" onclick="openModal('modal-voronoi')"
                     style="padding:0.5rem 1rem; width:100%; font-size:0.9rem;">View Details</button>
             </article>
 
-            <!-- 3. GEE ET Mapping -->
+            <!-- 4. Flood Risk Roßhaupten -->
             <article class="glass-card project-card" data-categories="GIS Research">
                 <div class="card-header"
                     style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
-                    <i class="fa-solid fa-satellite" style="font-size: 2rem; color: var(--accent);"></i>
+                    <i class="fa-solid fa-house-flood-water" style="font-size: 2rem; color: var(--accent);"></i>
                     <span
-                        style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">GEE</span>
+                        style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">RISK
+                        ANALYSIS</span>
                 </div>
-                <h3 style="margin-bottom:0.5rem;">Evapotranspiration Mapping</h3>
+                <h3 style="margin-bottom:0.5rem;">Flood Risk Reduction Study</h3>
                 <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
-                    Remote sensing pipeline on Google Earth Engine to map ET rates across agricultural zones.
+                    Micro-level flood risk assessment for Roßhaupten municipality using high-res topography and
+                    hydrological modeling.
                 </p>
-                <button class="btn-outline" onclick="openModal('modal-gee')"
+                <button class="btn-outline" onclick="openModal('modal-flood')"
                     style="padding:0.5rem 1rem; width:100%; font-size:0.9rem;">View Details</button>
             </article>
 
-            <!-- 4. Study Project (Elevation) -->
-            <article class="glass-card project-card" data-categories="Research ML">
+            <!-- 5. Snowmelt Runoff Model -->
+            <article class="glass-card project-card" data-categories="Research GIS">
                 <div class="card-header"
                     style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
-                    <i class="fa-solid fa-layer-group" style="font-size: 2rem; color: var(--accent);"></i>
+                    <i class="fa-solid fa-snowflake" style="font-size: 2rem; color: var(--accent);"></i>
                     <span
-                        style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">RESEARCH</span>
+                        style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">HYDROLOGY</span>
                 </div>
-                <h3 style="margin-bottom:0.5rem;">Elevation Smoothing & PPT</h3>
+                <h3 style="margin-bottom:0.5rem;">Snowmelt Runoff Modeling</h3>
                 <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
-                    Reduced predictive error by 45.4% using smoothed elevation covariates in precipitation models.
+                    Physically-based snowmelt model for the Inn River Basin integrating satellite-derived radiation data
+                    via GEE.
                 </p>
-                <button class="btn-outline" onclick="openModal('modal-elevation')"
+                <button class="btn-outline" onclick="openModal('modal-snow')"
+                    style="padding:0.5rem 1rem; width:100%; font-size:0.9rem;">View Details</button>
+            </article>
+
+            <!-- 6. Glacier Dynamics Nepal -->
+            <article class="glass-card project-card" data-categories="Research GIS">
+                <div class="card-header"
+                    style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
+                    <i class="fa-solid fa-icicles" style="font-size: 2rem; color: var(--accent);"></i>
+                    <span
+                        style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">CLIMATE
+                        CHANGE</span>
+                </div>
+                <h3 style="margin-bottom:0.5rem;">Glacier Dynamics in Nepal</h3>
+                <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
+                    Long-term analysis (1990-2020) of glacier changes in the Marshyangdi river basin using ML and
+                    multi-temporal satellite imagery.
+                </p>
+                <button class="btn-outline" onclick="openModal('modal-glacier')"
+                    style="padding:0.5rem 1rem; width:100%; font-size:0.9rem;">View Details</button>
+            </article>
+
+            <!-- 7. Post-Disaster LULC -->
+            <article class="glass-card project-card" data-categories="GIS Research">
+                <div class="card-header"
+                    style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
+                    <i class="fa-solid fa-city" style="font-size: 2rem; color: var(--accent);"></i>
+                    <span
+                        style="font-size:0.75rem; border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:100px; color:var(--text-muted);">REMOTE
+                        SENSING</span>
+                </div>
+                <h3 style="margin-bottom:0.5rem;">Post-Earthquake LULC Change</h3>
+                <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
+                    Quantified Land Use/Land Cover changes in Panauti/Banepa Valley following the 2015 earthquake.
+                </p>
+                <button class="btn-outline" onclick="openModal('modal-lulc')"
                     style="padding:0.5rem 1rem; width:100%; font-size:0.9rem;">View Details</button>
             </article>
 
@@ -149,9 +202,31 @@
     <!-- Modals -->
     <div id="modal-overlay" class="modal-overlay"
         style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:1200; backdrop-filter:blur(5px); align-items:center; justify-content:center;">
-        <!-- Modals content will be dynamically injected or hardcoded here. I'll stick to hardcoded for simplicity given no server. -->
 
-        <!-- Memory Modal -->
+        <!-- Precipitation Modal -->
+        <div id="modal-precip" class="modal-box"
+            style="display:none; background:var(--bg-slate); padding:2rem; max-width:600px; border-radius:var(--radius-lg); border:1px solid var(--border); position:relative;">
+            <button class="modal-close" onclick="closeModal('modal-precip')"
+                style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:white; font-size:1.5rem;">&times;</button>
+            <h2 style="margin-bottom:1rem;">Improvement of Areal Precipitation for Rainfall-Runoff Modeling</h2>
+            <p style="color:var(--text-muted); margin-bottom:1rem;"><strong>Grade: 1.0 (Master's Study Project)</strong>
+            </p>
+            <p style="color:var(--text-muted); margin-bottom:1rem;">
+                Developed and implemented a novel directional DEM smoothing and stratified kriging framework, reducing
+                precipitation estimation errors by 45.4% and enhancing the elevation-precipitation correlation for
+                hydrological applications.
+            </p>
+            <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+                Quantified the impact of refined precipitation data on a calibrated HBV model, evaluating its utility
+                for flood forecasting and analyzing critical interactions between input data and model structure.
+            </p>
+            <div style="display:flex; gap:1rem;">
+                <a href="https://github.com/Kripankc/Study_Project" target="_blank" class="btn btn-primary">View on
+                    GitHub</a>
+            </div>
+        </div>
+
+        <!-- Tool Modals -->
         <div id="modal-memory" class="modal-box"
             style="display:none; background:var(--bg-slate); padding:2rem; max-width:600px; border-radius:var(--radius-lg); border:1px solid var(--border); position:relative;">
             <button class="modal-close" onclick="closeModal('modal-memory')"
@@ -168,7 +243,6 @@
             </div>
         </div>
 
-        <!-- Voronoi Modal -->
         <div id="modal-voronoi" class="modal-box"
             style="display:none; background:var(--bg-slate); padding:2rem; max-width:600px; border-radius:var(--radius-lg); border:1px solid var(--border); position:relative;">
             <button class="modal-close" onclick="closeModal('modal-voronoi')"
@@ -185,39 +259,57 @@
             </div>
         </div>
 
-        <!-- GEE Modal -->
-        <div id="modal-gee" class="modal-box"
+        <!-- Flood Risk Modal -->
+        <div id="modal-flood" class="modal-box"
             style="display:none; background:var(--bg-slate); padding:2rem; max-width:600px; border-radius:var(--radius-lg); border:1px solid var(--border); position:relative;">
-            <button class="modal-close" onclick="closeModal('modal-gee')"
+            <button class="modal-close" onclick="closeModal('modal-flood')"
                 style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:white; font-size:1.5rem;">&times;</button>
-            <h2 style="margin-bottom:1rem;">Evapotranspiration Mapping</h2>
+            <h2 style="margin-bottom:1rem;">Flood Risk Reduction in Roßhaupten</h2>
             <p style="color:var(--text-muted); margin-bottom:1.5rem;">
-                Developed a comprehensive pipeline using Google Earth Engine (GEE) to map evapotranspiration rates. This
-                project leverages satellite imagery to monitor water usage in agricultural zones, aiding in efficient
-                irrigation management.
+                Utilized high-resolution geospatial parameters (topography, land cover) in GIS and hydrological models
+                for micro-level flood risk assessment. The project involved modeling the area's hydrological response,
+                analyzing various runoff mitigation strategies (e.g., culvert design, retention basins), and applying
+                analytical skills to spatially data to develop recommendations.
             </p>
-            <div style="display:flex; gap:1rem;">
-                <a href="https://github.com/Kripankc/evapotranspiration-mapping-on-GEE" target="_blank"
-                    class="btn btn-primary">View on GitHub</a>
-            </div>
         </div>
 
-        <!-- Elevation Modal -->
-        <div id="modal-elevation" class="modal-box"
+        <!-- Snowmelt Modal -->
+        <div id="modal-snow" class="modal-box"
             style="display:none; background:var(--bg-slate); padding:2rem; max-width:600px; border-radius:var(--radius-lg); border:1px solid var(--border); position:relative;">
-            <button class="modal-close" onclick="closeModal('modal-elevation')"
+            <button class="modal-close" onclick="closeModal('modal-snow')"
                 style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:white; font-size:1.5rem;">&times;</button>
-            <h2 style="margin-bottom:1rem;">Elevation Smoothing & PPT</h2>
+            <h2 style="margin-bottom:1rem;">Snowmelt Runoff Modeling (Inn River Basin)</h2>
             <p style="color:var(--text-muted); margin-bottom:1.5rem;">
-                <strong>Research Abstract:</strong> Investigated the impact of elevation smoothing on precipitation
-                interpolation accuracy in the Bavarian Alps. By applying a 5x5 focal mean filter to DEM data, the
-                predictive capability of the model improved significantly, reducing RMSE by ~45.4% compared to raw
-                elevation data.
+                Developed a physically-based snowmelt runoff model integrating satellite-derived radiation data to
+                improve model accuracy. Required use of Google Earth Engine (GEE) for efficient remote sensing data
+                retrieval and Python programming for calibration and visualization.
             </p>
-            <div style="display:flex; gap:1rem;">
-                <a href="https://github.com/Kripankc/Study_Project" target="_blank" class="btn btn-primary">View on
-                    GitHub</a>
-            </div>
+        </div>
+
+        <!-- Glacier Modal -->
+        <div id="modal-glacier" class="modal-box"
+            style="display:none; background:var(--bg-slate); padding:2rem; max-width:600px; border-radius:var(--radius-lg); border:1px solid var(--border); position:relative;">
+            <button class="modal-close" onclick="closeModal('modal-glacier')"
+                style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:white; font-size:1.5rem;">&times;</button>
+            <h2 style="margin-bottom:1rem;">Glacier Dynamics in Nepal</h2>
+            <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+                Investigated long-term glacier dynamics (1990 to 2020) in the Marshyangdi river basin to assess climate
+                change effects. Involved intensive processing of multi-temporal satellite imagery (Landsat 4/5/8 and
+                Sentinel-2) and application of Machine Learning algorithms to map clean vs debris-covered ice.
+            </p>
+        </div>
+
+        <!-- LULC Modal -->
+        <div id="modal-lulc" class="modal-box"
+            style="display:none; background:var(--bg-slate); padding:2rem; max-width:600px; border-radius:var(--radius-lg); border:1px solid var(--border); position:relative;">
+            <button class="modal-close" onclick="closeModal('modal-lulc')"
+                style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:white; font-size:1.5rem;">&times;</button>
+            <h2 style="margin-bottom:1rem;">Post-Disaster LULC Change Detection</h2>
+            <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+                Conducted a study using Remote Sensing satellite imagery to analyze and quantify LULC change patterns in
+                the Panauti and Banepa Valley following the major 2015 earthquake. The analysis focused on Change
+                Detection and incorporated essential ground validation techniques.
+            </p>
         </div>
 
     </div>
