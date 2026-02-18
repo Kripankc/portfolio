@@ -14,7 +14,7 @@
 
         .cat-title {
             font-size: 1.25rem;
-            color: var(--accent);
+            color: var(--accent-cyan);
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
@@ -25,42 +25,23 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: var(--border);
-        }
-
-        .skill-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-card {
-            background: var(--bg-glass);
-            border: 1px solid var(--border);
-            padding: 1.5rem;
-            border-radius: var(--radius-sm);
-            text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .skill-card:hover {
-            border-color: var(--accent);
-            background: rgba(0, 212, 170, 0.05);
-            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .skill-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--text-main);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .bento-item:hover .skill-icon {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--accent-glow);
         }
 
         .skill-name {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
             color: var(--text-muted);
         }
@@ -84,36 +65,43 @@
                 <li><a href="experience.html" class="nav-link">Experience</a></li>
                 <li><a href="projects.html" class="nav-link">Projects</a></li>
             </ul>
+        </div>
     </nav>
 
     <main class="page-header container">
-        <h1 class="page-title">Technical Expertise</h1>
-        <p class="page-desc">Advanced geospatial analysis and software engineering for environmental applications.</p>
+        <h1 class="page-title reveal">Technical Expertise</h1>
+        <p class="page-desc reveal" style="transition-delay:0.1s;">Advanced geospatial analysis and software engineering
+            for environmental applications.</p>
     </main>
 
     <section class="container" style="padding-bottom: 120px;">
 
         <!-- Geospatial Analysis -->
-        <div class="skill-category reveal">
+        <div class="skill-category reveal" style="transition-delay:0.2s;">
             <h3 class="cat-title"><i class="fa-solid fa-earth-americas"></i> Geospatial Analysis & Modeling</h3>
-            <div class="skill-grid">
-                <div class="skill-card">
+            <div class="bento-grid" style="grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));">
+                <div class="bento-item"
+                    style="display:flex; flex-direction:column; align-items:center; text-align:center;">
                     <i class="fa-solid fa-satellite skill-icon"></i>
                     <span class="skill-name">Remote Sensing</span>
                 </div>
-                <div class="skill-card">
+                <div class="bento-item"
+                    style="display:flex; flex-direction:column; align-items:center; text-align:center;">
                     <i class="fa-solid fa-globe skill-icon"></i>
                     <span class="skill-name">Google Earth Engine</span>
                 </div>
-                <div class="skill-card">
+                <div class="bento-item"
+                    style="display:flex; flex-direction:column; align-items:center; text-align:center;">
                     <i class="fa-solid fa-map skill-icon"></i>
                     <span class="skill-name">ArcGIS / QGIS</span>
                 </div>
-                <div class="skill-card">
+                <div class="bento-item"
+                    style="display:flex; flex-direction:column; align-items:center; text-align:center;">
                     <i class="fa-solid fa-water skill-icon"></i>
                     <span class="skill-name">Hydrological Modeling</span>
                 </div>
-                <div class="skill-card">
+                <div class="bento-item"
+                    style="display:flex; flex-direction:column; align-items:center; text-align:center;">
                     <i class="fa-solid fa-house-flood-water skill-icon"></i>
                     <span class="skill-name">HEC-RAS / HEC-HMS</span>
                 </div>
@@ -121,26 +109,31 @@
         </div>
 
         <!-- Geospatial Data Engineering -->
-        <div class="skill-category reveal">
+        <div class="skill-category reveal" style="transition-delay:0.3s;">
             <h3 class="cat-title"><i class="fa-solid fa-code"></i> Geospatial Data Engineering</h3>
-            <div class="skill-grid">
-                <div class="skill-card">
+            <div class="bento-grid" style="grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));">
+                <div class="bento-item"
+                    style="display:flex; flex-direction:column; align-items:center; text-align:center;">
                     <i class="fa-brands fa-python skill-icon"></i>
                     <span class="skill-name">Python</span>
                 </div>
-                <div class="skill-card">
+                <div class="bento-item"
+                    style="display:flex; flex-direction:column; align-items:center; text-align:center;">
                     <i class="fa-solid fa-toolbox skill-icon"></i>
                     <span class="skill-name">Tool Building</span>
                 </div>
-                <div class="skill-card">
+                <div class="bento-item"
+                    style="display:flex; flex-direction:column; align-items:center; text-align:center;">
                     <i class="fa-solid fa-server skill-icon"></i>
                     <span class="skill-name">API Development</span>
                 </div>
-                <div class="skill-card">
+                <div class="bento-item"
+                    style="display:flex; flex-direction:column; align-items:center; text-align:center;">
                     <i class="fa-solid fa-database skill-icon"></i>
                     <span class="skill-name">Data Analysis</span>
                 </div>
-                <div class="skill-card">
+                <div class="bento-item"
+                    style="display:flex; flex-direction:column; align-items:center; text-align:center;">
                     <i class="fa-solid fa-gears skill-icon"></i>
                     <span class="skill-name">Automation (ArcPy)</span>
                 </div>

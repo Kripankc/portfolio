@@ -35,20 +35,39 @@
     <!-- Hero Section -->
     <main class="hero-wrapper container">
         <div class="hero-content">
-            <span class="hero-label">Environmental Engineer & Geospatial Data Scientist</span>
-            <h1 class="hero-title">Modeling Environmental Risks with Advanced GIS</h1>
-            <p class="hero-subtitle">
+            <span class="hero-label reveal">Environmental Engineer & Geospatial Data Scientist</span>
+            <h1 class="hero-title reveal" style="transition-delay: 0.1s;">Modeling Environmental Risks with Advanced GIS
+            </h1>
+            <p class="hero-subtitle reveal" style="transition-delay: 0.2s;">
                 Specializing in environmental hazard modeling, disaster risk reduction, and building scalable geospatial
                 software solutions.
             </p>
-            <div class="hero-actions">
+            <div class="hero-actions reveal" style="transition-delay: 0.3s;">
                 <a href="projects.html" class="btn btn-primary">View Work</a>
                 <a href="about.html" class="btn btn-outline">About Me</a>
             </div>
         </div>
 
-        <!-- Abstract Background Canvas -->
-        <canvas id="bg-canvas"></canvas>
+        <!-- 3D Rotation Controller Demo -->
+        <div class="rotation-stage reveal" style="transition-delay: 0.4s; margin-left: auto; margin-right: 0;">
+            <div class="rotation-cube">
+                <div class="cube-face face-front"><i class="fa-solid fa-earth-americas"></i></div>
+                <div class="cube-face face-back"><i class="fa-solid fa-code"></i></div>
+                <div class="cube-face face-right"><i class="fa-solid fa-layer-group"></i></div>
+                <div class="cube-face face-left"><i class="fa-solid fa-database"></i></div>
+                <div class="cube-face face-top"><i class="fa-solid fa-satellite"></i></div>
+                <div class="cube-face face-bottom"><i class="fa-solid fa-water"></i></div>
+            </div>
+
+            <div class="rotation-controls">
+                <button class="control-btn" onclick="rotateCube('left')"><i class="fa-solid fa-arrow-left"></i></button>
+                <button class="control-btn" onclick="rotateCube('right')"><i
+                        class="fa-solid fa-arrow-right"></i></button>
+            </div>
+            <p style="text-align:center; font-size:0.8rem; color:var(--text-muted); margin-top:1rem;">Interactive 3D
+                Preview</p>
+        </div>
+
     </main>
 
     <script src="script.js"></script>
